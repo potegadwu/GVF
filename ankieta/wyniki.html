@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wyniki Ankiety - Lookup SkyEvents</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e4df;min-height:100vh}
+.container{max-width:900px;margin:0 auto;padding:40px 24px}
+.header{text-align:center;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.header .logo{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#a09080;margin-bottom:16px}
+.header h1{font-size:28px;font-weight:300;letter-spacing:-0.5px;color:#fff;margin-bottom:8px}
+.header .subtitle{font-size:14px;color:#7a7570}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;text-align:center}
+.stat-card .number{font-size:36px;font-weight:300;color:#c9a96e;margin-bottom:4px}
+.stat-card .label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6a6560}
+.chart-section{margin-bottom:48px}
+.chart-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.chart-block{margin-bottom:32px}
+.chart-block h3{font-size:14px;font-weight:400;color:#e8e4df;margin-bottom:12px}
+.bar-row{display:flex;align-items:center;margin-bottom:8px}
+.bar-label{width:200px;font-size:13px;color:#a09590;flex-shrink:0;text-align:right;padding-right:16px}
+.bar-track{flex:1;height:28px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden;position:relative}
+.bar-fill{height:100%;background:linear-gradient(90deg,#c9a96e,#e8d5b0);border-radius:4px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:600;color:#0a0a0a;min-width:fit-content;transition:width 0.6s cubic-bezier(.4,0,.2,1)}
+.bar-fill.empty{background:transparent;color:#5a5550;font-weight:400}
+.bar-count{margin-left:8px;font-size:11px;color:#7a7570;font-weight:400}
+.no-data{text-align:center;padding:80px 20px;color:#4a4540}
+.no-data h2{font-size:20px;font-weight:300;margin-bottom:8px}
+.btn-reset{background:transparent;border:1px solid rgba(255,80,80,0.3);color:rgba(255,80,80,0.7);padding:10px 24px;border-radius:6px;font-family:inherit;font-size:12px;cursor:pointer;margin-top:24px}
+.btn-reset:hover{border-color:rgba(255,80,80,0.6);color:rgba(255,80,80,1)}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr}.bar-label{width:120px;font-size:11px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">Lookup SkyEvents</div>
+    <h1>Wyniki Ankiety</h1>
+    <div class="subtitle">Dashboard z wynikami badania percepcji</div>
+  </div>
+  <div id="content"></div>
+</div>
+<script>
+const DATA = JSON.parse(localStorage.getItem('lookup_survey_results') || '[]');
+const el = document.getElementById('content');
+
+if (!DATA.length) {
+  el.innerHTML = '<div class="no-data"><h2>Brak danych</h2><p>Ankieta nie została jeszcze wypełniona ani razu.</p><p style="margin-top:16px"><a href="index.html" style="color:#c9a96e">Przejdź do ankiety</a></p></div>';
+} else {
+  const total = DATA.length;
+  const answers = DATA.map(d => d.answers);
+
+  function count(q) {
+    const c = {};
+    answers.forEach(a => {
+      if (a[q]) {
+        const vals = a[q].split('; ');
+        vals.forEach(v => { c[v] = (c[v] || 0) + 1; });
+      }
+    });
+    return Object.entries(c).sort((a,b) => b[1] - a[1]);
+  }
+
+  function barHTML(label, count, max) {
+    const pct = max ? Math.round((count / max) * 100) : 0;
+    return `<div class="bar-row"><div class="bar-label">${label}</div><div class="bar-track"><div class="bar-fill${pct===0?' empty':''}" style="width:${Math.max(pct,2)}%">${pct > 8 ? pct+'%' : ''}</div></div><div class="bar-count">${count}</div></div>`;
+  }
+
+  function renderBars(q, title) {
+    const data = count(q);
+    const max = data.length ? data[0][1] : 0;
+    if (!data.length) return '';
+    return `<div class="chart-block"><h3>${title}</h3>${data.map(d => barHTML(d[0], d[1], max)).join('')}</div>`;
+  }
+
+  function renderYesNo(q, title) {
+    const data = count(q);
+    if (!data.length) return '';
+    return `<div class="chart-block"><h3>${title}</h3>${data.map(d => barHTML(d[0], d[1], total)).join('')}</div>`;
+  }
+
+  let html = `
+    <div class="stats-grid">
+      <div class="stat-card"><div class="number">${total}</div><div class="label">Wypełnionych ankiet</div></div>
+      <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych ról</div></div>
+      <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w Lookup</div></div>
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część I &mdash; Profil respondenta</div>
+      ${renderBars('q1', 'Rola w branży')}
+      ${renderBars('q2', 'Wielkość agencji')}
+      ${renderBars('q3', 'Liczba eventów rocznie')}
+      ${renderBars('q4', 'Rodzaje eventów')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część II &mdash; Znajomość marki Lookup</div>
+      ${renderBars('q5', 'Czy znasz Lookup?')}
+      ${renderBars('q6', 'Skąd informacje o Lookup?')}
+      ${renderBars('q7', 'Czy realizowałeś/aś event w Lookup?')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część III &mdash; Percepcja miejsca</div>
+      ${renderBars('q8', 'Główne zalety Lookup')}
+      ${renderBars('q9', 'Cena vs inne wieżowce')}
+      ${renderBars('q10', 'Jakość cateringu Villa Foksal')}
+      ${renderBars('q11', 'Elastyczność oferty cateringowej')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część IV &mdash; Obsługa i współpraca</div>
+      ${renderBars('q12', 'Praca działu sprzedaży')}
+      ${renderBars('q13', 'Dostosowanie ofert do klienta')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część V &mdash; Rekomendacje</div>
+      ${renderBars('q14', 'Kiedy rekomendujesz Lookup?')}
+      ${renderBars('q15', 'Kiedy NIE rekomendujesz Lookup?')}
+      ${renderBars('q16', 'Jak często eventy nadają się do Lookup?')}
+      ${renderBars('q17', 'Ile z nich trafia do Lookup?')}
+      ${renderBars('q18', 'Co zwiększyłoby rekomendacje?')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część VI &mdash; Konkurencja</div>
+      ${renderBars('q19', 'Z czym porównujesz Lookup?')}
+      ${renderBars('q20', 'Najczęstsza alternatywa')}
+      ${renderBars('q21', 'Czy klienci wracają do Lookup?')}
+      ${renderBars('q22', 'Etyka niepowtarzania lokalizacji')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Część VII &mdash; Podsumowanie</div>
+      ${renderBars('q23', 'Największe bariery rekomendacji')}
+    </div>
+
+    <div class="chart-section">
+      <div class="chart-title">Otwarte odpowiedzi</div>
+      <div class="chart-block"><h3>Co zmieniłbyś/aś w Lookup?</h3>
+        ${answers.filter(a=>a.q24).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q24+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+      </div>
+      <div class="chart-block"><h3>Czego jeszcze nie wiemy?</h3>
+        ${answers.filter(a=>a.q25).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q25+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px">
+      <button class="btn-reset" onclick="if(confirm('Na pewno usunąć wszystkie dane?')){localStorage.removeItem('lookup_survey_results');location.reload();}">Wyczyść dane</button>
+    </div>
+  `;
+  el.innerHTML = html;
+}
+</script>
+</body>
+</html>
