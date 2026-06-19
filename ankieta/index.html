@@ -399,13 +399,14 @@ body {
       <div class="section-title">Część I &mdash; Profil respondenta</div>
 
       <div class="question" data-q="q1">
-        <div class="question-text"><span class="question-number">1.</span> Jak opisujesz swoją rolę w branży eventowej?</div>
+        <div class="question-text"><span class="question-number">1.</span> Jakie stanowisko zajmujesz w reprezentowanej organizacji?</div>
         <div class="options-radio">
-          <label class="option" data-val="Właściciel / Partner"><div class="check"></div><span class="label">Właściciel / Partner w agencji eventowej</span></label>
-          <label class="option" data-val="Dyrektor / Kierownik"><div class="check"></div><span class="label">Dyrektor / Kierownik działu eventów</span></label>
+          <label class="option" data-val="Właściciel / Wspólnik / Zarząd"><div class="check"></div><span class="label">Właściciel / Wspólnik / Członek Zarządu</span></label>
+          <label class="option" data-val="Dyrektor / Kierownik działu"><div class="check"></div><span class="label">Dyrektor / Kierownik działu</span></label>
+          <label class="option" data-val="Dyrektor kreatywny"><div class="check"></div><span class="label">Dyrektor kreatywny</span></label>
           <label class="option" data-val="Project / Account Manager"><div class="check"></div><span class="label">Project Manager / Account Manager</span></label>
-          <label class="option" data-val="Event Manager / Koordynator"><div class="check"></div><span class="label">Event Manager / Koordynator</span></label>
-          <label class="option" data-val="Inna"><div class="check"></div><span class="label">Inna</span></label>
+          <label class="option" data-val="Event Manager / Specjalista"><div class="check"></div><span class="label">Event Manager / Specjalista ds. eventów</span></label>
+          <label class="option" data-val="Inne"><div class="check"></div><span class="label">Inne</span></label>
         </div>
       </div>
 
@@ -430,17 +431,16 @@ body {
       </div>
 
       <div class="question" data-q="q4">
-        <div class="question-text"><span class="question-number">4.</span> Jakiego rodzaju eventy realizujecie najczęściej?</div>
+        <div class="question-text"><span class="question-number">4.</span> Jakiego rodzaju eventy realizujecie najczęściej z podanych poniżej na liście?</div>
         <div class="hint">Można wybrać więcej niż jedną odpowiedź</div>
         <div class="options-checkbox">
           <label class="option" data-val="Konferencje, kongresy i seminaria"><div class="check"></div><span class="label">Konferencje, kongresy i seminaria</span></label>
           <label class="option" data-val="Gale wieczorne i rozdania nagród"><div class="check"></div><span class="label">Gale wieczorne i rozdania nagród</span></label>
           <label class="option" data-val="Premiery produktów"><div class="check"></div><span class="label">Premiery produktów</span></label>
-          <label class="option" data-val="Sniadania biznesowe"><div class="check"></div><span class="label">Sniadania biznesowe</span></label>
+          <label class="option" data-val="Śniadania biznesowe"><div class="check"></div><span class="label">Śniadania biznesowe</span></label>
           <label class="option" data-val="Mini konferencje"><div class="check"></div><span class="label">Mini konferencje</span></label>
           <label class="option" data-val="Spotkania integracyjne dla firm"><div class="check"></div><span class="label">Spotkania integracyjne dla firm</span></label>
           <label class="option" data-val="Targi i wystawy"><div class="check"></div><span class="label">Targi i wystawy</span></label>
-          <label class="option" data-val="Festiwale muzyczne i koncerty plenerowe"><div class="check"></div><span class="label">Festiwale muzyczne i koncerty plenerowe</span></label>
         </div>
       </div>
     </div>
@@ -769,6 +769,8 @@ function showSection(n) {
   if (n <= TOTAL) {
     const sec = document.querySelector('.section[data-section="' + getSectionForQ(n) + '"]');
     if (sec) sec.classList.add('active');
+    // Pokazywanie przycisku Wstecz na każdej podstronie poza pierwszą pytaniem
+    document.getElementById('btn-back').style.visibility = (current > 1) ? 'visible' : 'hidden';
   } else {
     document.querySelector('.section[data-section="done"]').classList.add('active');
     document.getElementById('nav').style.display = 'none';
@@ -791,6 +793,27 @@ document.querySelectorAll('.options-radio .option').forEach(opt => {
     parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
     this.classList.add('selected');
     answers[qName] = this.dataset.val;
+
+    // Specjalna logika dla Q5: ukrywanie Q6 i Q7, jeśli respondent nie zna miejsca
+    if (qName === 'q5') {
+      const q6 = document.querySelector('.question[data-q="q6"]');
+      const q7 = document.querySelector('.question[data-q="q7"]');
+      if (this.dataset.val === 'Nie, nie słyszałem') {
+        if (q6) {
+          q6.style.display = 'none';
+          q6.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        }
+        if (q7) {
+          q7.style.display = 'none';
+          q7.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        }
+        delete answers['q6'];
+        delete answers['q7'];
+      } else {
+        if (q6) q6.style.display = '';
+        if (q7) q7.style.display = '';
+      }
+    }
   });
 });
 
@@ -828,7 +851,11 @@ document.querySelectorAll('.text-input').forEach(ta => {
 // Navigation
 document.getElementById('btn-next').addEventListener('click', function() {
   if (current <= TOTAL) {
-    current++;
+    if (current === 5 && answers['q5'] === 'Nie, nie słyszałem') {
+      current = 19;
+    } else {
+      current++;
+    }
     if (current > TOTAL) {
       showSection(current);
       saveAnswers();
@@ -840,7 +867,11 @@ document.getElementById('btn-next').addEventListener('click', function() {
 
 document.getElementById('btn-back').addEventListener('click', function() {
   if (current > 1) {
-    current--;
+    if (current === 19 && answers['q5'] === 'Nie, nie słyszałem') {
+      current = 5;
+    } else {
+      current--;
+    }
     showSection(current);
   }
 });

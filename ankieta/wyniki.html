@@ -85,13 +85,13 @@ if (!DATA.length) {
   let html = `
     <div class="stats-grid">
       <div class="stat-card"><div class="number">${total}</div><div class="label">Wypełnionych ankiet</div></div>
-      <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych ról</div></div>
+      <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych stanowisk</div></div>
       <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w Lookup</div></div>
     </div>
 
     <div class="chart-section">
       <div class="chart-title">Część I &mdash; Profil respondenta</div>
-      ${renderBars('q1', 'Rola w branży')}
+      ${renderBars('q1', 'Stanowisko w organizacji')}
       ${renderBars('q2', 'Wielkość agencji')}
       ${renderBars('q3', 'Liczba eventów rocznie')}
       ${renderBars('q4', 'Rodzaje eventów')}
