@@ -672,7 +672,6 @@ body {
         <div class="question-text"><span class="question-number">21.</span> Czy istnieje Twoim zdaniem "etyka" niepowtarzania tego samego miejsca dla tego samego klienta?</div>
         <div class="options-radio">
           <label class="option" data-val="Tak, klienci nie chcą wracać"><div class="check"></div><span class="label">Tak, klienci często nie chcą wracać do tego samego miejsca</span></label>
-          <label class="option" data-val="Czasem - zależy od klienta"><div class="check"></div><span class="label">Czasem &mdash; zależy od klienta i typu eventu</span></label>
           <label class="option" data-val="Nie - miejsce się sprawdza"><div class="check"></div><span class="label">Nie, jeśli miejsce się sprawdza, klienci chętnie wracają</span></label>
           <label class="option" data-val="Nie mam zdania"><div class="check"></div><span class="label">Nie mam zdania</span></label>
         </div>
@@ -700,18 +699,8 @@ body {
       </div>
 
       <div class="question" data-q="q23">
-        <div class="question-text"><span class="question-number">23.</span> Gdybyś mógł/mogła zaproponować jedną najważniejszą zmianę w Lookup, co by to było?</div>
+        <div class="question-text"><span class="question-number">23.</span> Jaki element powoduje, że Klienci wybierają właśnie Lookup?</div>
         <textarea class="text-input" data-q="q23" placeholder="Twoja odpowiedź..."></textarea>
-      </div>
-
-      <div class="question" data-q="q24">
-        <div class="question-text"><span class="question-number">24.</span> Czy jest coś, czego jeszcze nie wiemy o Lookup, a co ważne jest z perspektywy agencji eventowej?</div>
-        <textarea class="text-input" data-q="q24" placeholder="Twoja odpowiedź..."></textarea>
-      </div>
-
-      <div class="question" data-q="q25">
-        <div class="question-text"><span class="question-number">25.</span> Jaki element powoduje, że Klienci wybierają właśnie Lookup?</div>
-        <textarea class="text-input" data-q="q25" placeholder="Twoja odpowiedź..."></textarea>
       </div>
     </div>
 
@@ -735,7 +724,7 @@ body {
 </div>
 
 <script>
-const TOTAL = 25;
+const TOTAL = 23;
 let current = 1;
 const answers = {};
 
@@ -747,7 +736,7 @@ const sections = {
   4: [12,13],
   5: [14,15,16,17,18],
   6: [19,20,21],
-  7: [22,23,24,25]
+  7: [22,23]
 };
 
 function updateProgress() {
@@ -848,6 +837,8 @@ document.getElementById('btn-next').addEventListener('click', function() {
   if (current <= TOTAL) {
     if (current === 5 && answers['q5'] === 'Nie, nie słyszałem') {
       current = 19;
+    } else if (current === 21 && answers['q5'] === 'Nie, nie słyszałem') {
+      current = 24; // Przejście od razu do done screen (current > TOTAL (23))
     } else {
       current++;
     }
