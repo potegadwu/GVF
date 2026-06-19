@@ -128,24 +128,26 @@ if (!DATA.length) {
     </div>
 
     <div class="chart-section">
-      <div class="chart-title">Część VI &mdash; Konkurencja</div>
+      <div class="chart-title">Część VI &mdash; Konkurencja i alternatywy</div>
       ${renderBars('q19', 'Znajomość innych lokalizacji w wieżowcach')}
-      ${renderBars('q20', 'Najczęstsza alternatywa')}
-      ${renderBars('q21', 'Czy klienci wracają do Lookup?')}
-      ${renderBars('q22', 'Etyka niepowtarzania lokalizacji')}
+      ${renderBars('q20', 'Najczęściej wybierany rodzaj przestrzeni')}
+      ${renderBars('q21', 'Etyka niepowtarzania lokalizacji')}
     </div>
 
     <div class="chart-section">
       <div class="chart-title">Część VII &mdash; Podsumowanie</div>
-      ${renderBars('q23', 'Największe bariery rekomendacji')}
+      ${renderBars('q22', 'Największe bariery rekomendacji')}
     </div>
 
     <div class="chart-section">
       <div class="chart-title">Otwarte odpowiedzi</div>
-      <div class="chart-block"><h3>Co zmieniłbyś/aś w Lookup?</h3>
-        ${answers.filter(a=>a.q24).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q24+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+      <div class="chart-block"><h3>Co zmieniłbyś/aś w Lookup? (Najważniejsza zmiana)</h3>
+        ${answers.filter(a=>a.q23).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q23+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
       </div>
       <div class="chart-block"><h3>Czego jeszcze nie wiemy?</h3>
+        ${answers.filter(a=>a.q24).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q24+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+      </div>
+      <div class="chart-block"><h3>Co decyduje o wyborze Lookup?</h3>
         ${answers.filter(a=>a.q25).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q25+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
       </div>
     </div>
