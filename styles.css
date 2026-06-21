@@ -1900,19 +1900,14 @@ body.scrolled .side-menu-header {
     overflow: hidden;
     height: auto;
     width: 100%;
-    aspect-ratio: 1 / 1; /* Force perfect squares for all cards by default */
-}
-.team-row-1 .team-comp-wrapper {
-    aspect-ratio: auto; /* Except the top row which is 520px fixed */
 }
 .team-video-row {
     grid-column: span 2;
     height: 600px;
-    aspect-ratio: auto;
 }
 .team-sales-drawing, .team-lukasz-video {
     height: auto;
-    /* aspect-ratio inherited from .team-comp-wrapper */
+    aspect-ratio: 1 / 1;
 }
 .team-comp-img {
     height: 100%;
