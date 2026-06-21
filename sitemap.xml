@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+    <!-- Strona główna -->
+    <url>
+        <loc>https://villafoksalgroup.pl/</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://villafoksalgroup.pl/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://villafoksalgroup.pl/?lang=en"/>
+    </url>
+    
+    <!-- Sekcja: Historia -->
+    <url>
+        <loc>https://villafoksalgroup.pl/#historia</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Sekcja: Nasze Marki -->
+    <url>
+        <loc>https://villafoksalgroup.pl/#marki</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Sekcja: O mnie (Paweł Chmielewski) -->
+    <url>
+        <loc>https://villafoksalgroup.pl/#o-mnie</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Sekcja: Fundusz dla młodych -->
+    <url>
+        <loc>https://villafoksalgroup.pl/#stypendium</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Sekcja: Kontakt -->
+    <url>
+        <loc>https://villafoksalgroup.pl/#kontakt</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+</urlset>
