@@ -21,6 +21,11 @@
     <header class="main-header">
         <div class="header-container">
             <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle menu">
+                <span class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
                 <span class="menu-text uppercase-spaced translation" data-pl="Menu" data-en="Menu">Menu</span>
             </button>
             <div class="logo-container">
@@ -151,7 +156,7 @@
         <section class="section-motto">
             <div class="container text-center">
                 <div class="motto-box">
-                    <h3 class="serif accent-color translation" data-pl="Miejsca, które zostają" data-en="Places that remain">Miejsca, które zostają</h3>
+                    <h3 class="serif accent-color translation" data-pl="Miejsca,<br class='mobile-break'>które zostają" data-en="Places that<br class='mobile-break'>remain">Miejsca,<br class="mobile-break">które zostają</h3>
                     <p class="motto-desc translation" 
                        data-pl="Opowieść o przestrzeniach, w których Warszawa świętuje swoje najważniejsze chwile." 
                        data-en="A story of spaces where Warsaw celebrates its most important moments.">
@@ -419,6 +424,7 @@
             <div class="overlay-body">
                 <!-- Video Player -->
                 <div class="video-container">
+                    <button class="video-close-btn" aria-label="Close fullscreen video">&times;</button>
                     <video class="overlay-video" controls preload="metadata">
                         <source src="assets/vf_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -460,6 +466,7 @@
             <div class="overlay-body">
                 <!-- Video Player -->
                 <div class="video-container">
+                    <button class="video-close-btn" aria-label="Close fullscreen video">&times;</button>
                     <video class="overlay-video" controls preload="metadata">
                         <source src="assets/lu_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -501,6 +508,7 @@
             <div class="overlay-body">
                 <!-- Video Player -->
                 <div class="video-container">
+                    <button class="video-close-btn" aria-label="Close fullscreen video">&times;</button>
                     <video class="overlay-video" controls preload="metadata">
                         <source src="assets/catering_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.

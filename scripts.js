@@ -233,21 +233,88 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
-    // --- 7. SCROLL TO TOP BUTTON ---
+    // --- 7. SCROLL TO TOP BUTTON (HANDLES MAIN PAGE AND OVERLAYS) ---
     const scrollTopBtn = document.getElementById('scroll-to-top-btn');
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
+    function updateScrollTopVisibility() {
+        let shouldShow = window.scrollY > 300;
+        
+        // Also check if any open overlay is scrolled
+        overlays.forEach(overlay => {
+            if (overlay.classList.contains('open') && overlay.scrollTop > 300) {
+                shouldShow = true;
+            }
+        });
+        
+        if (shouldShow) {
             scrollTopBtn.classList.add('show');
         } else {
             scrollTopBtn.classList.remove('show');
         }
+     }
+    
+    window.addEventListener('scroll', updateScrollTopVisibility);
+    
+    // Add scroll event listener to each overlay container
+    overlays.forEach(overlay => {
+        overlay.addEventListener('scroll', updateScrollTopVisibility);
     });
     
     scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        // If an overlay is open, scroll the overlay container to top
+        const openOverlay = Array.from(overlays).find(o => o.classList.contains('open'));
+        if (openOverlay) {
+            openOverlay.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+    // --- 8. FULLSCREEN VIDEO PLAYER IN OVERLAYS ---
+    const overlayVideos = document.querySelectorAll('.overlay-video');
+    overlayVideos.forEach(video => {
+        const container = video.closest('.video-container');
+        if (!container) return;
+        const closeBtn = container.querySelector('.video-close-btn');
+
+        // Play event opens fullscreen mode
+        video.addEventListener('play', () => {
+            if (!container.classList.contains('fullscreen')) {
+                container.classList.add('fullscreen');
+                video.setAttribute('controls', 'true');
+            }
+        });
+
+        function closeFullscreenVideo() {
+            container.classList.remove('fullscreen');
+            video.pause();
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeFullscreenVideo();
+            });
+        }
+
+        // Tapping/clicking on video/container close actions
+        container.addEventListener('click', (e) => {
+            if (container.classList.contains('fullscreen')) {
+                const isMobile = window.innerWidth <= 768;
+                // If on mobile (max 768px), tap anywhere to close.
+                // If on desktop, tap only on background backdrop to close (not video/controls).
+                if (isMobile || e.target === container || e.target === video) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeFullscreenVideo();
+                }
+            }
         });
     });
 
