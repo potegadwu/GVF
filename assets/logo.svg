@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <style>
+    .title { font-family: 'Georgia', 'Times New Roman', serif; fill: #ffffff; letter-spacing: 8px; }
+    .subtitle { font-family: 'Georgia', 'Times New Roman', serif; fill: #c9a96e; letter-spacing: 12px; }
+  </style>
+  <text x="200" y="55" text-anchor="middle" class="title" font-size="36">VILLA FOKSAL</text>
+  <text x="200" y="90" text-anchor="middle" class="subtitle" font-size="16">GROUP</text>
+</svg>
