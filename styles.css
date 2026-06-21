@@ -2124,4 +2124,79 @@ body.scrolled .side-menu-header {
         font-size: 1.8rem;
         padding-bottom: 2px;
     }
+    
+    /* Slide-down menu on mobile like Brunello Cucinelli */
+    .side-menu {
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        transform: translateY(-100%) !important;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        box-shadow: none !important;
+        border-right: none !important;
+        overflow-y: auto !important;
+    }
+    
+    .side-menu.open {
+        transform: translateY(0) !important;
+    }
+    
+    .side-menu-header {
+        height: 70px !important;
+        padding: 0 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        background-color: var(--color-navy) !important;
+        border-bottom: 1px solid rgba(250, 247, 242, 0.05) !important;
+    }
+    
+    body.scrolled .side-menu-header {
+        height: 60px !important;
+    }
+    
+    .side-menu-logo-wrapper {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    
+    .side-menu-logo-wrapper .logo-svg {
+        width: 170px !important;
+        height: 48px !important;
+    }
+    
+    .close-menu {
+        margin-left: 0 !important;
+        position: absolute !important;
+        left: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: var(--bg-cream) !important;
+        font-size: 2.2rem !important;
+        padding: 0 !important;
+    }
+
+    body.menu-open {
+        overflow: hidden !important;
+    }
+    
+    .side-menu-content {
+        padding: 40px 24px !important;
+        justify-content: center !important;
+        gap: 40px !important;
+    }
+    
+    .nav-links {
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+    
+    .nav-item {
+        font-size: 1.15rem !important;
+        letter-spacing: 0.18em !important;
+    }
 }
