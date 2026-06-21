@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             langPlBtn.classList.add('active');
             langEnBtn.classList.remove('active');
             document.documentElement.setAttribute('lang', 'pl');
-            document.title = "Villa Foksal Group | Prestiż, Tradycja, Nowoczesność";
+            document.title = "Villa Foksal Group | Prestiż, tradycja, nowoczesność";
         } else {
             langEnBtn.classList.add('active');
             langPlBtn.classList.remove('active');
