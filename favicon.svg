@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80">
+  <g fill="#1a2744">
+    <!-- V -->
+    <path d="M5 10 L25 70 L30 70 L37 50 L44 70 L49 70 L69 10 L60 10 L45 55 L30 10 Z"/>
+    <!-- F top bar (connected to V) -->
+    <path d="M5 10 L5 6 L75 6 L75 12 L49 12 L44 24 L70 24 L70 30 L37 30 L37 12 L5 12 Z"/>
+    <!-- F middle bar -->
+    <path d="M37 36 L62 36 L62 42 L37 42 Z"/>
+    <!-- G -->
+    <path d="M95 10 Q75 10 75 40 Q75 70 95 70 Q110 70 112 55 L105 55 Q103 62 95 62 Q83 62 83 40 Q83 18 95 18 Q105 18 108 28 L115 28 Q112 10 95 10 Z"/>
+  </g>
+</svg>
