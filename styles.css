@@ -1716,10 +1716,12 @@ body.scrolled .side-menu-header {
     border-color: var(--color-bordeaux);
 }
 
-/* Full-width Video Section styling */
 .section-hero-video-fullwidth {
     padding: 0;
     background-color: var(--color-navy);
+    margin-top: -3px; /* Pull up to cover sub-pixel gaps */
+    position: relative;
+    z-index: 5;
 }
 
 .hero-video-wrapper {
@@ -2057,30 +2059,40 @@ body.scrolled .side-menu-header {
     position: absolute;
     top: 24px;
     right: 24px;
-    background: rgba(11, 22, 44, 0.6);
-    border: 1px solid rgba(250, 247, 242, 0.2);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     color: var(--bg-cream);
-    font-size: 2.2rem;
-    line-height: 1;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     z-index: 10005;
     align-items: center;
     justify-content: center;
     transition: var(--transition-fast);
-    padding: 0 0 4px 0;
+    padding: 0;
 }
 
 .video-close-btn:hover {
-    background: rgba(11, 22, 44, 0.9);
     color: #FFFFFF;
-    border-color: rgba(250, 247, 242, 0.5);
+    transform: scale(1.1);
+}
+
+.video-close-btn svg {
+    display: block;
+    width: 24px;
+    height: 24px;
 }
 
 .video-container.fullscreen .video-close-btn {
     display: flex;
+}
+
+/* Hide scroll to top button when fullscreen video is active */
+body.fullscreen-video-active #scroll-to-top-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 /* Mobile Overrides for Header, Logo, Motto, Videos */
@@ -2119,10 +2131,12 @@ body.scrolled .side-menu-header {
     .video-close-btn {
         top: 16px;
         right: 16px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.8rem;
-        padding-bottom: 2px;
+        width: 36px;
+        height: 36px;
+    }
+    .video-close-btn svg {
+        width: 20px;
+        height: 20px;
     }
     
     /* Slide-down menu on mobile like Brunello Cucinelli */

@@ -257,7 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add scroll event listener to each overlay container
     overlays.forEach(overlay => {
-        overlay.addEventListener('scroll', updateScrollTopVisibility);
+        overlay.addEventListener('scroll', () => {
+            // Auto-shrink fullscreen video when scrolling down
+            const fullscreenContainer = overlay.querySelector('.video-container.fullscreen');
+            if (fullscreenContainer && overlay.scrollTop > 40) {
+                const video = fullscreenContainer.querySelector('.overlay-video');
+                fullscreenContainer.classList.remove('fullscreen');
+                document.body.classList.remove('fullscreen-video-active');
+                if (video) {
+                    video.pause();
+                }
+            }
+            updateScrollTopVisibility();
+        });
     });
     
     scrollTopBtn.addEventListener('click', () => {
@@ -287,12 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
         video.addEventListener('play', () => {
             if (!container.classList.contains('fullscreen')) {
                 container.classList.add('fullscreen');
+                document.body.classList.add('fullscreen-video-active');
                 video.setAttribute('controls', 'true');
             }
         });
 
         function closeFullscreenVideo() {
             container.classList.remove('fullscreen');
+            document.body.classList.remove('fullscreen-video-active');
             video.pause();
         }
 
