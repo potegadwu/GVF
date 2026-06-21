@@ -145,6 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // O mnie (Founder) overlay nav button trigger
+    const navOmnieBtn = document.getElementById('nav-omnie-btn');
+    const cardOmnieBtn = document.getElementById('card-omnie-btn');
+    [navOmnieBtn, cardOmnieBtn].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                closeMenu();
+                openBrandOverlay('omnie');
+            });
+        }
+    });
+
     // Close overlay on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {

@@ -1374,6 +1374,19 @@ body.scrolled .side-menu-header {
     fill: #A79380;
 }
 
+.overlay-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+
+.overlay-inner-scroll {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
 .footer-logo {
     width: 160px;
     height: auto;
@@ -1641,12 +1654,12 @@ body.scrolled .side-menu-header {
     border-color: var(--color-bordeaux);
 }
 
-/* Garden card style: all white text without apla */
+/* Garden card style: white text with delicate 5% apla */
 .card-garden .cucinelli-overlay-text {
     padding: 60px 50px;
     justify-content: flex-end;
     height: 100%;
-    background: none !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0) 100%) !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border: none !important;
@@ -1900,6 +1913,8 @@ body.scrolled .side-menu-header {
     overflow: hidden;
     height: auto;
     width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 50vw;
 }
 .team-video-row {
     grid-column: span 2;
@@ -1908,6 +1923,7 @@ body.scrolled .side-menu-header {
 .team-sales-drawing, .team-lukasz-video {
     height: auto;
     aspect-ratio: 1 / 1;
+    min-height: 50vw;
 }
 .team-comp-img {
     height: 100%;
@@ -1995,6 +2011,7 @@ body.scrolled .side-menu-header {
     .team-comp-wrapper {
         height: auto;
         aspect-ratio: 4 / 3; /* Force uniform size on mobile */
+        min-height: 75vw;
     }
     .team-comp-img {
         height: 100%;
@@ -2007,10 +2024,12 @@ body.scrolled .side-menu-header {
     .team-video-row {
         height: auto;
         aspect-ratio: 4 / 3;
+        min-height: 75vw;
     }
     .team-sales-drawing, .team-lukasz-video {
         height: auto;
         aspect-ratio: 4 / 3;
+        min-height: 75vw;
     }
     /* Keep overlay on image, just adjust padding/font size */
     .team-overlay-text {
