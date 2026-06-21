@@ -2182,21 +2182,4 @@ body.scrolled .side-menu-header {
     body.menu-open {
         overflow: hidden !important;
     }
-    
-    .side-menu-content {
-        padding: 40px 24px !important;
-        justify-content: center !important;
-        gap: 40px !important;
-    }
-    
-    .nav-links {
-        align-items: center !important;
-        text-align: center !important;
-        gap: 30px !important;
-    }
-    
-    .nav-item {
-        font-size: 1.15rem !important;
-        letter-spacing: 0.18em !important;
-    }
 }
