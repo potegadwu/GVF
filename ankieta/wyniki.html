@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wyniki Ankiety - Lookup SkyEvents</title>
+<title>Wyniki Ankiety - LookUp Sky Events</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -37,7 +37,7 @@ body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e4df;min-height:
 <body>
 <div class="container">
   <div class="header">
-    <div class="logo">Lookup SkyEvents</div>
+    <div class="logo">LookUp Sky Events</div>
     <h1>Wyniki Ankiety</h1>
     <div class="subtitle">Dashboard z wynikami badania percepcji</div>
   </div>
@@ -86,7 +86,7 @@ if (!DATA.length) {
     <div class="stats-grid">
       <div class="stat-card"><div class="number">${total}</div><div class="label">Wypełnionych ankiet</div></div>
       <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych stanowisk</div></div>
-      <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w Lookup</div></div>
+      <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w LookUp</div></div>
     </div>
 
     <div class="chart-section">
@@ -98,15 +98,15 @@ if (!DATA.length) {
     </div>
 
     <div class="chart-section">
-      <div class="chart-title">Część II &mdash; Znajomość marki Lookup</div>
-      ${renderBars('q5', 'Czy znasz Lookup?')}
-      ${renderBars('q6', 'Skąd informacje o Lookup?')}
-      ${renderBars('q7', 'Czy realizowałeś/aś event w Lookup?')}
+      <div class="chart-title">Część II &mdash; Znajomość marki LookUp</div>
+      ${renderBars('q5', 'Czy znasz LookUp?')}
+      ${renderBars('q6', 'Skąd informacje o LookUp?')}
+      ${renderBars('q7', 'Czy realizowałeś(aś) event w LookUp?')}
     </div>
 
     <div class="chart-section">
       <div class="chart-title">Część III &mdash; Percepcja miejsca</div>
-      ${renderBars('q8', 'Główne zalety Lookup')}
+      ${renderBars('q8', 'Główne zalety LookUp')}
       ${renderBars('q9', 'Cena vs inne wieżowce')}
       ${renderBars('q10', 'Jakość cateringu Villa Foksal')}
       ${renderBars('q11', 'Elastyczność oferty cateringowej')}
@@ -120,10 +120,10 @@ if (!DATA.length) {
 
     <div class="chart-section">
       <div class="chart-title">Część V &mdash; Rekomendacje</div>
-      ${renderBars('q14', 'Kiedy rekomendujesz Lookup?')}
-      ${renderBars('q15', 'Kiedy NIE rekomendujesz Lookup?')}
-      ${renderBars('q16', 'Jak często eventy nadają się do Lookup?')}
-      ${renderBars('q17', 'Ile z nich trafia do Lookup?')}
+      ${renderBars('q14', 'Kiedy rekomendujesz LookUp?')}
+      ${renderBars('q15', 'Kiedy NIE rekomendujesz LookUp?')}
+      ${renderBars('q16', 'Jak często eventy nadają się do LookUp?')}
+      ${renderBars('q17', 'Ile z nich trafia do LookUp?')}
       ${renderBars('q18', 'Co zwiększyłoby rekomendacje?')}
     </div>
 
@@ -141,7 +141,7 @@ if (!DATA.length) {
 
     <div class="chart-section">
       <div class="chart-title">Otwarte odpowiedzi</div>
-      <div class="chart-block"><h3>Co decyduje o wyborze Lookup?</h3>
+      <div class="chart-block"><h3>Co decyduje o wyborze LookUp?</h3>
         ${answers.filter(a=>a.q23).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q23+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
       </div>
     </div>
