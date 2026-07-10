@@ -238,9 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- 6. SCROLL DETECTOR FOR COMPACT HEADER ---
     function handleScroll() {
-        if (window.scrollY > 37) {
+        const thresholdAdd = 80;
+        const thresholdRemove = 20;
+        if (window.scrollY > thresholdAdd) {
             document.body.classList.add('scrolled');
-        } else {
+        } else if (window.scrollY < thresholdRemove) {
             document.body.classList.remove('scrolled');
         }
     }

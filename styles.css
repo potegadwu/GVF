@@ -197,6 +197,9 @@ body.menu-open .top-bar-content span {
     backdrop-filter: blur(8px);
     transition: padding 0.3s ease, background-color 0.3s ease, min-height 0.3s ease;
     min-height: 110px; /* Lock height to contain the large logo */
+    transform: translate3d(0, 0, 0); /* Force GPU compositing layer */
+    backface-visibility: hidden;
+    will-change: padding, min-height, background-color;
     display: flex;
     align-items: center;
 }
@@ -1785,102 +1788,31 @@ body.scrolled .side-menu-header {
     border-color: var(--color-bordeaux);
 }
 
-/* Catering Full-width Section */
-.section-catering-fullwidth {
-    padding: 0;
-    margin: 0;
-    position: relative;
+/* Catering Banners */
+.catering-banner-wrapper {
     width: 100%;
-    height: 550px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
     overflow: hidden;
 }
 
-.catering-fullwidth-wrapper {
-    position: relative;
+.catering-banner-wrapper a {
+    display: block;
     width: 100%;
     height: 100%;
 }
 
-.catering-fullwidth-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+.catering-banner-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    transition: filter 0.3s ease;
 }
 
-.catering-overlay-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    pointer-events: none;
-}
-
-.catering-overlay-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 60px 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    z-index: 2;
-}
-
-.catering-category {
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-    font-family: var(--font-sans);
-}
-
-.catering-title {
-    font-size: 2.2rem;
-    line-height: 1.4;
-    margin-bottom: 15px;
-    max-width: 800px;
-    font-family: var(--font-serif);
-}
-
-.catering-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    font-family: var(--font-serif);
-    font-style: italic;
-    opacity: 0.9;
-}
-
-.catering-author {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    font-family: var(--font-sans);
-    opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-    .section-catering-fullwidth {
-        height: 450px;
-    }
-    .catering-overlay-text {
-        padding: 40px 20px;
-    }
-    .catering-title {
-        font-size: 1.8rem;
-    }
-    .catering-subtitle {
-        font-size: 0.95rem;
-    }
+.catering-banner-img:hover {
+    filter: brightness(0.95);
 }
 
 .section-hero-video-fullwidth {
