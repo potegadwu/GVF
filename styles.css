@@ -1674,24 +1674,29 @@ body.scrolled .side-menu-header {
     border: none !important;
 }
 .card-garden .cucinelli-card-category,
-.card-lookup .cucinelli-card-category {
+.card-lookup .cucinelli-card-category,
+.section-catering-fullwidth .cucinelli-card-category {
     color: #FFFFFF; /* White category */
 }
 .card-garden .cucinelli-card-title,
-.card-lookup .cucinelli-card-title {
+.card-lookup .cucinelli-card-title,
+.section-catering-fullwidth .cucinelli-card-title {
     color: #FFFFFF;
 }
 .card-garden .cucinelli-card-quote,
-.card-lookup .cucinelli-card-quote {
+.card-lookup .cucinelli-card-quote,
+.section-catering-fullwidth .cucinelli-card-quote {
     color: rgba(255, 255, 255, 0.9);
 }
 .card-garden .cucinelli-card-link,
-.card-lookup .cucinelli-card-link {
+.card-lookup .cucinelli-card-link,
+.section-catering-fullwidth .cucinelli-card-link {
     color: #FFFFFF;
     border-color: #FFFFFF;
 }
 .card-garden .cucinelli-card-link:hover,
-.card-lookup .cucinelli-card-link:hover {
+.card-lookup .cucinelli-card-link:hover,
+.section-catering-fullwidth .cucinelli-card-link:hover {
     color: #E5E9EC;
     border-color: #E5E9EC;
 }
@@ -1788,32 +1793,65 @@ body.scrolled .side-menu-header {
     border-color: var(--color-bordeaux);
 }
 
-/* Catering Banners */
-.catering-banner-wrapper {
-    width: 100%;
-    margin: 0;
+/* Catering Full-width Section */
+.section-catering-fullwidth {
     padding: 0;
-    display: block;
+    margin: 0;
     position: relative;
+    width: 100%;
+    height: 550px;
     overflow: hidden;
 }
 
-.catering-banner-wrapper a {
-    display: block;
+.catering-fullwidth-wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
 }
 
-.catering-banner-img {
+.catering-fullwidth-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    transition: filter 0.3s ease;
+    height: 100%;
+    object-fit: cover;
 }
 
-.catering-banner-img:hover {
-    filter: brightness(0.95);
+.catering-overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    pointer-events: none;
 }
+
+.catering-overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 2;
+}
+@media (max-width: 768px) {
+    .section-catering-fullwidth {
+        height: 450px;
+    }
+    .catering-overlay-text {
+        padding: 40px 20px;
+    }
+}
+
 
 .section-hero-video-fullwidth {
     padding: 0;

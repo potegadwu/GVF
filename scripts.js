@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- 3. BRAND DETAILS OVERLAYS (SUBPAGES) ---
-    const brandBtns = document.querySelectorAll('.brand-btn');
+    const brandBtns = document.querySelectorAll('.brand-btn, .cucinelli-card-link[data-brand]');
     const closeOverlayBtns = document.querySelectorAll('.close-overlay');
     const overlays = document.querySelectorAll('.brand-overlay');
 
