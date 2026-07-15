@@ -32,6 +32,19 @@ body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e4df;min-height:
 .btn-reset{background:transparent;border:1px solid rgba(255,80,80,0.3);color:rgba(255,80,80,0.7);padding:10px 24px;border-radius:6px;font-family:inherit;font-size:12px;cursor:pointer;margin-top:24px}
 .btn-reset:hover{border-color:rgba(255,80,80,0.6);color:rgba(255,80,80,1)}
 @media(max-width:600px){.stats-grid{grid-template-columns:1fr}.bar-label{width:120px;font-size:11px}}
+.tab-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 32px; }
+.tab-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: #a09590; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; transition: all 0.2s ease; }
+.tab-btn:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); color: #fff; }
+.tab-btn.active { background: rgba(201, 169, 110, 0.1); border-color: #c9a96e; color: #c9a96e; }
+.view-section { display: none; }
+.view-section.active { display: block; }
+.respondent-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 24px; margin-bottom: 20px; text-align: left; }
+.respondent-card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+.respondent-title { font-size: 15px; font-weight: 500; color: #c9a96e; }
+.respondent-date { font-size: 12px; color: #7a7570; }
+.respondent-qa-item { margin-bottom: 16px; }
+.respondent-q { font-size: 13px; color: #a09590; font-weight: 500; margin-bottom: 6px; }
+.respondent-a { font-size: 14px; color: #fff; padding-left: 12px; border-left: 2px solid rgba(201, 169, 110, 0.3); line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -44,9 +57,85 @@ body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e8e4df;min-height:
   <div id="content"></div>
 </div>
 <script>
+const questionLabels = {
+  q1: 'Stanowisko w organizacji',
+  q2: 'Wielkość agencji/firmy',
+  q3: 'Liczba eventów rocznie',
+  q4: 'Najczęściej realizowane rodzaje eventów',
+  q5: 'Czy słyszałeś(aś) o LookUp?',
+  q6: 'Skąd czerpałeś(aś) informacje o LookUp?',
+  q7: 'Czy realizowałeś(aś) event w LookUp?',
+  q8: 'Główne zalety LookUp',
+  q9: 'Ocena ceny wynajmu vs inne wieżowce',
+  q10: 'Ocena jakości cateringu (Villa Foksal)',
+  q11: 'Ocena elastyczności oferty cateringowej',
+  q12: 'Ocena pracy działu sprzedaży',
+  q13: 'Dostosowanie ofert do potrzeb',
+  q14: 'Kiedy rekomendujesz LookUp?',
+  q15: 'Kiedy NIE rekomendujesz LookUp?',
+  q16: 'Jak często eventy nadają się do LookUp?',
+  q17: 'Jaki % trafia do LookUp?',
+  q18: 'Co zwiększyłoby rekomendacje?',
+  q19: 'Znajomość innych lokalizacji w wieżowcach',
+  q20: 'Najczęściej wybierany rodzaj przestrzeni',
+  q21: 'Etyka niepowtarzania lokalizacji u tego samego klienta',
+  q22: 'Największe bariery rekomendacji',
+  q23: 'Co decyduje o wyborze LookUp (otwarta odpowiedź)'
+};
+
+window.switchTab = function(tabName) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+  
+  if (tabName === 'stats') {
+    document.querySelector('.tab-btn[onclick*="stats"]').classList.add('active');
+    document.getElementById('tab-stats').classList.add('active');
+  } else {
+    document.querySelector('.tab-btn[onclick*="individual"]').classList.add('active');
+    document.getElementById('tab-individual').classList.add('active');
+    if (!document.getElementById('respondent-card-content').innerHTML && window.dashboardData && window.dashboardData.length > 0) {
+      showRespondent(0);
+    }
+  }
+};
+
+window.showRespondent = function(index) {
+  const DATA = window.dashboardData;
+  const item = DATA[index];
+  if (!item) return;
+  const ans = item.answers;
+  const date = new Date(item.timestamp).toLocaleString('pl-PL');
+  
+  let html = `
+    <div class="respondent-card">
+      <div class="respondent-card-header">
+        <span class="respondent-title">Respondent #${parseInt(index)+1} &mdash; ${ans.q1 || 'Nie podano'}</span>
+        <span class="respondent-date">Data: ${date}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+  `;
+  
+  Object.keys(questionLabels).forEach(key => {
+    const val = ans[key] || '<em style="color:#5a5550">Brak odpowiedzi</em>';
+    html += `
+      <div class="respondent-qa-item">
+        <div class="respondent-q">${questionLabels[key]}</div>
+        <div class="respondent-a">${val}</div>
+      </div>
+    `;
+  });
+  
+  html += `
+      </div>
+    </div>
+  `;
+  document.getElementById('respondent-card-content').innerHTML = html;
+};
+
 const DATA = JSON.parse(localStorage.getItem('lookup_survey_results') || '[]');
 const el = document.getElementById('content');
 
+window.dashboardData = DATA;
 if (!DATA.length) {
   el.innerHTML = '<div class="no-data"><h2>Brak danych</h2><p>Ankieta nie została jeszcze wypełniona ani razu.</p><p style="margin-top:16px"><a href="index.html" style="color:#c9a96e">Przejdź do ankiety</a></p></div>';
 } else {
@@ -83,67 +172,88 @@ if (!DATA.length) {
   }
 
   let html = `
-    <div class="stats-grid">
-      <div class="stat-card"><div class="number">${total}</div><div class="label">Wypełnionych ankiet</div></div>
-      <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych stanowisk</div></div>
-      <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w LookUp</div></div>
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('stats')">Wykresy i statystyki</button>
+      <button class="tab-btn" onclick="switchTab('individual')">Odpowiedzi indywidualne</button>
     </div>
 
-    <div class="chart-section">
-      <div class="chart-title">Część I &mdash; Profil respondenta</div>
-      ${renderBars('q1', 'Stanowisko w organizacji')}
-      ${renderBars('q2', 'Wielkość agencji')}
-      ${renderBars('q3', 'Liczba eventów rocznie')}
-      ${renderBars('q4', 'Rodzaje eventów')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część II &mdash; Znajomość marki LookUp</div>
-      ${renderBars('q5', 'Czy znasz LookUp?')}
-      ${renderBars('q6', 'Skąd informacje o LookUp?')}
-      ${renderBars('q7', 'Czy realizowałeś(aś) event w LookUp?')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część III &mdash; Percepcja miejsca</div>
-      ${renderBars('q8', 'Główne zalety LookUp')}
-      ${renderBars('q9', 'Cena vs inne wieżowce')}
-      ${renderBars('q10', 'Jakość cateringu Villa Foksal')}
-      ${renderBars('q11', 'Elastyczność oferty cateringowej')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część IV &mdash; Obsługa i współpraca</div>
-      ${renderBars('q12', 'Praca działu sprzedaży')}
-      ${renderBars('q13', 'Dostosowanie ofert do klienta')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część V &mdash; Rekomendacje</div>
-      ${renderBars('q14', 'Kiedy rekomendujesz LookUp?')}
-      ${renderBars('q15', 'Kiedy NIE rekomendujesz LookUp?')}
-      ${renderBars('q16', 'Jak często eventy nadają się do LookUp?')}
-      ${renderBars('q17', 'Ile z nich trafia do LookUp?')}
-      ${renderBars('q18', 'Co zwiększyłoby rekomendacje?')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część VI &mdash; Konkurencja i alternatywy</div>
-      ${renderBars('q19', 'Znajomość innych lokalizacji w wieżowcach')}
-      ${renderBars('q20', 'Najczęściej wybierany rodzaj przestrzeni')}
-      ${renderBars('q21', 'Etyka niepowtarzania lokalizacji')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Część VII &mdash; Podsumowanie</div>
-      ${renderBars('q22', 'Największe bariery rekomendacji')}
-    </div>
-
-    <div class="chart-section">
-      <div class="chart-title">Otwarte odpowiedzi</div>
-      <div class="chart-block"><h3>Co decyduje o wyborze LookUp?</h3>
-        ${answers.filter(a=>a.q23).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q23+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+    <div id="tab-stats" class="view-section active">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="number">${total}</div><div class="label">Wypełnionych ankiet</div></div>
+        <div class="stat-card"><div class="number">${new Set(answers.map(a => a.q1)).size}</div><div class="label">Różnych stanowisk</div></div>
+        <div class="stat-card"><div class="number">${answers.filter(a => a.q7 && a.q7.startsWith('Tak')).length}</div><div class="label">Realizowało event w LookUp</div></div>
       </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część I &mdash; Profil respondenta</div>
+        ${renderBars('q1', 'Stanowisko w organizacji')}
+        ${renderBars('q2', 'Wielkość agencji')}
+        ${renderBars('q3', 'Liczba eventów rocznie')}
+        ${renderBars('q4', 'Rodzaje eventów')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część II &mdash; Znajomość marki LookUp</div>
+        ${renderBars('q5', 'Czy znasz LookUp?')}
+        ${renderBars('q6', 'Skąd informacje o LookUp?')}
+        ${renderBars('q7', 'Czy realizowałeś(aś) event w LookUp?')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część III &mdash; Percepcja miejsca</div>
+        ${renderBars('q8', 'Główne zalety LookUp')}
+        ${renderBars('q9', 'Cena vs inne wieżowce')}
+        ${renderBars('q10', 'Jakość cateringu Villa Foksal')}
+        ${renderBars('q11', 'Elastyczność oferty cateringowej')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część IV &mdash; Obsługa i współpraca</div>
+        ${renderBars('q12', 'Praca działu sprzedaży')}
+        ${renderBars('q13', 'Dostosowanie ofert do klienta')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część V &mdash; Rekomendacje</div>
+        ${renderBars('q14', 'Kiedy rekomendujesz LookUp?')}
+        ${renderBars('q15', 'Kiedy NIE rekomendujesz LookUp?')}
+        ${renderBars('q16', 'Jak często eventy nadają się do LookUp?')}
+        ${renderBars('q17', 'Ile z nich trafia do LookUp?')}
+        ${renderBars('q18', 'Co zwiększyłoby rekomendacje?')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część VI &mdash; Konkurencja i alternatywy</div>
+        ${renderBars('q19', 'Znajomość innych lokalizacji w wieżowcach')}
+        ${renderBars('q20', 'Najczęściej wybierany rodzaj przestrzeni')}
+        ${renderBars('q21', 'Etyka niepowtarzania lokalizacji')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Część VII &mdash; Podsumowanie</div>
+        ${renderBars('q22', 'Największe bariery rekomendacji')}
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">Otwarte odpowiedzi</div>
+        <div class="chart-block"><h3>Co decyduje o wyborze LookUp?</h3>
+          ${answers.filter(a=>a.q23).map(a=>'<div style="padding:10px 16px;margin-bottom:6px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:13px;color:#c8c3be;border-left:2px solid #c9a96e">'+a.q23+'</div>').join('') || '<div style="color:#4a4540;font-size:13px">Brak odpowiedzi</div>'}
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-individual" class="view-section">
+      <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <label for="respondent-select" style="font-size: 14px; color: #a09590;">Wybierz respondenta:</label>
+        <select id="respondent-select" onchange="showRespondent(this.value)" style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 10px 16px; border-radius: 8px; font-family: inherit; font-size: 14px; cursor: pointer; max-width: 100%; min-width: 280px;">
+          ${DATA.map((d, index) => {
+            const date = new Date(d.timestamp).toLocaleString('pl-PL');
+            const pos = d.answers.q1 || 'Nie podano stanowiska';
+            return `<option value="${index}">Respondent #${index + 1} (${pos} - ${date})</option>`;
+          }).join('')}
+        </select>
+      </div>
+      <div id="respondent-card-content"></div>
     </div>
 
     <div style="text-align:center;margin-top:40px">
