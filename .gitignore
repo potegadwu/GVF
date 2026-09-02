@@ -1,0 +1,4 @@
+# Scratch scripts and temp data
+*.py
+*.xlsx
+extracted_media/
