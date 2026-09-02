@@ -2998,3 +2998,124 @@ body.fullscreen-video-active #scroll-to-top-btn {
     height: 100%;
     object-fit: cover;
 }
+
+
+/* ==========================================================
+   Biography: Portrait with Vertical Side Photographer Credit
+   ========================================================== */
+.portrait-image-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 50px auto;
+    position: relative;
+    text-align: center;
+}
+.portrait-image-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+.portrait-credit-side {
+    position: absolute;
+    right: -24px;
+    bottom: 8px;
+    transform-origin: bottom right;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.72rem; /* nieco mniejsze o punkt */
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+}
+
+/* ==========================================================
+   Biography: Cards with Vertical / Natural Photo Heights
+   ========================================================== */
+.bio-gallery-image-wrapper {
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    max-height: 850px !important;
+    overflow: hidden;
+    border: 1px solid rgba(11, 22, 44, 0.05);
+    background-color: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bio-press-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 850px !important;
+    object-fit: contain !important;
+    display: block;
+    filter: none !important;
+    transition: var(--transition-smooth);
+}
+.bio-gallery-item:hover .bio-press-img {
+    filter: none !important;
+    transform: scale(1.015);
+}
+
+/* ==========================================================
+   Biography Outro Quote (Zwieńczenie)
+   ========================================================== */
+.biography-outro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.55rem;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 90px auto 50px auto;
+    text-align: center;
+    color: var(--color-navy);
+    padding: 35px 30px;
+    border-top: 1px solid rgba(122, 28, 46, 0.25);
+    border-bottom: 1px solid rgba(122, 28, 46, 0.25);
+}
+
+/* ==========================================================
+   Footer Bottom & Credits: skorwider.pl (Desktop & Mobile)
+   ========================================================== */
+.footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+.footer-credits {
+    margin: 0;
+    font-size: 0.82rem;
+    color: rgba(250, 247, 242, 0.65);
+}
+.footer-credits a {
+    color: var(--bg-cream);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.footer-credits a:hover {
+    color: var(--color-burgundy-light, #c46d7e);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .portrait-credit-side {
+        right: 4px;
+        bottom: 6px;
+        font-size: 0.65rem;
+    }
+    .biography-outro {
+        font-size: 1.25rem;
+        padding: 25px 15px;
+        margin: 60px auto 30px auto;
+    }
+    .footer-bottom {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 8px !important;
+    }
+}
