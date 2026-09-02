@@ -1678,7 +1678,7 @@ body.scrolled .side-menu-header {
 }
 
 .overlay-footer {
-    margin-top: 80px;
+    margin-top: 0;
 }
 
 .main-footer .container {
@@ -2506,7 +2506,10 @@ body.scrolled .side-menu-header {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition-fast);
+    transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s ease;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -2515,13 +2518,22 @@ body.scrolled .side-menu-header {
 }
 
 .scroll-to-top.show {
-    opacity: 0.8;
+    opacity: 0.85;
     visibility: visible;
 }
 
 .scroll-to-top:hover {
     opacity: 1;
     transform: translateY(-5px);
+}
+
+/* White arrow when overlapping dark navy footer */
+.scroll-to-top.on-navy {
+    color: #ffffff !important;
+}
+
+.scroll-to-top.on-navy:hover {
+    color: var(--color-gold, #c9a96e) !important;
 }
 
 /* --- MOBILE HEADER & HAMBURGER STYLES --- */
@@ -2736,6 +2748,8 @@ body.fullscreen-video-active #scroll-to-top-btn {
     gap: 4px;
     width: 100%;
     margin-top: 60px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     background: transparent;
 }
 
@@ -2746,9 +2760,10 @@ body.fullscreen-video-active #scroll-to-top-btn {
 .overlay-vf-video-card {
     position: relative;
     width: 100%;
-    aspect-ratio: 1080 / 1380;
+    aspect-ratio: 9 / 16;
     overflow: hidden;
     background: #000;
+    margin-bottom: 0;
 }
 
 .overlay-vf-video {

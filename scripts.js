@@ -376,6 +376,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 7. SCROLL TO TOP BUTTON (HANDLES MAIN PAGE AND OVERLAYS) ---
     const scrollTopBtn = document.getElementById('scroll-to-top-btn');
     
+    function updateScrollTopColor() {
+        if (!scrollTopBtn) return;
+        const btnRect = scrollTopBtn.getBoundingClientRect();
+        if (btnRect.width === 0) return;
+
+        let isOnNavy = false;
+        const footers = document.querySelectorAll('.main-footer');
+        footers.forEach(footer => {
+            const fRect = footer.getBoundingClientRect();
+            // Check if arrow overlaps footer in the viewport
+            if (btnRect.bottom > fRect.top && btnRect.top < fRect.bottom && fRect.top < window.innerHeight && fRect.bottom > 0) {
+                isOnNavy = true;
+            }
+        });
+
+        if (isOnNavy) {
+            scrollTopBtn.classList.add('on-navy');
+        } else {
+            scrollTopBtn.classList.remove('on-navy');
+        }
+    }
+
     function updateScrollTopVisibility() {
         let shouldShow = window.scrollY > 300;
         
@@ -391,6 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             scrollTopBtn.classList.remove('show');
         }
+
+        updateScrollTopColor();
     }
     
     // --- Mobile: show arrow only when user STOPS scrolling ---
@@ -413,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         scrollTopBtn.classList.add('show');
                     }
                 });
+                updateScrollTopColor();
             }, 1200);
         } else {
             // On desktop: normal behavior
@@ -425,6 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add scroll event listener to each overlay container
     overlays.forEach(overlay => {
         overlay.addEventListener('scroll', () => {
+            updateScrollTopColor();
             // Auto-shrink fullscreen video when scrolling down
             const fullscreenContainer = overlay.querySelector('.video-container.fullscreen');
             if (fullscreenContainer && overlay.scrollTop > 40) {
