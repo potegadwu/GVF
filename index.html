@@ -316,9 +316,21 @@
 <li>
 <a class="nav-item translation" data-en="Our Brands" data-pl="Nasze marki" href="#marki">Nasze marki</a>
 <ul class="nav-sub-links">
-<li><a class="nav-sub-item brand-nav-link" data-brand="vf" href="#overlay-vf">Villa Foksal</a></li>
-<li><a class="nav-sub-item brand-nav-link" data-brand="lu" href="#overlay-lu">LookUp</a></li>
-<li><a class="nav-sub-item brand-nav-link" data-brand="cvf" href="#overlay-cvf">Catering Villa Foksal</a></li>
+<li>
+    <a class="nav-sub-item brand-nav-link" data-brand="vf" href="#villa-foksal" title="Villa Foksal">
+        <img alt="Villa Foksal" class="nav-sub-logo logo-vf" decoding="async" loading="eager" src="assets/logo_vf.svg"/>
+    </a>
+</li>
+<li>
+    <a class="nav-sub-item brand-nav-link" data-brand="lu" href="#lookup" title="LookUp Sky Events">
+        <img alt="LookUp Sky Events" class="nav-sub-logo logo-lu" decoding="async" loading="eager" src="assets/logo_lu.svg"/>
+    </a>
+</li>
+<li>
+    <a class="nav-sub-item brand-nav-link" data-brand="cvf" href="#catering" title="Catering Villa Foksal">
+        <img alt="Catering Villa Foksal" class="nav-sub-logo logo-cvf" decoding="async" loading="eager" src="assets/logo_cvf_dark.svg"/>
+    </a>
+</li>
 </ul>
 </li>
 <li><a class="nav-item line-split translation" data-en="FOUNDER'S PATH&lt;br&gt;PAWEŁ CHMIELEWSKI" data-pl="DROGA ZAŁOŻYCIELA&lt;br&gt;PAWEŁ CHMIELEWSKI" href="#o-mnie" id="nav-omnie-btn">DROGA ZAŁOŻYCIELA<br/>PAWEŁ CHMIELEWSKI</a></li>
@@ -333,7 +345,7 @@
 <section class="section-hero-grid">
 <div class="cucinelli-grid">
 <!-- Cell 1: Film LookUp (displayed on the left) -->
-<div class="cucinelli-card card-garden card-lookup">
+<div class="cucinelli-card card-garden card-lookup brand-direct-card" data-brand="lu">
 <div class="cucinelli-media-wrapper">
 <video autoplay="" class="cucinelli-video" loop="" muted="" playsinline="" preload="metadata" webkit-playsinline="">
 <source src="assets/film_lu_home.mp4" type="video/mp4"/>
@@ -344,12 +356,12 @@
 <span class="cucinelli-card-category uppercase-spaced translation" data-en="LookUp at dawn" data-pl="LookUp o świcie">LookUp o świcie</span>
 <h3 class="serif cucinelli-card-title translation" data-en="Start the day 195 meters &lt;br&gt; above the ground" data-pl="Zacznij dzień 195 metrów &lt;br&gt; nad ziemią">Zacznij dzień 195 metrów <br/> nad ziemią</h3>
 <p class="cucinelli-card-quote italic translation" data-en="“The perfect start for a conference &lt;br&gt; or business breakfast.”" data-pl="„Idealny początek konferencji, &lt;br&gt; śniadania biznesowego.”">„Idealny początek konferencji, <br/> śniadania biznesowego.”</p>
-<a class="cucinelli-card-link uppercase-spaced translation" data-en="Explore LookUp" data-pl="Poznaj LookUp" href="#marki">Poznaj LookUp</a>
+<a class="cucinelli-card-link uppercase-spaced translation" data-brand="lu" data-en="Explore LookUp" data-pl="Poznaj LookUp" href="#lookup">Poznaj LookUp</a>
 </div>
 </div>
 </div>
 <!-- Cell 2: Film Ogród (displayed on the right) -->
-<div class="cucinelli-card card-garden">
+<div class="cucinelli-card card-garden brand-direct-card" data-brand="vf">
 <div class="cucinelli-media-wrapper">
 <video autoplay="" class="cucinelli-video" loop="" muted="" playsinline="" preload="metadata" webkit-playsinline="">
 <source src="assets/film_vf_ogrod.mp4" type="video/mp4"/>
@@ -360,13 +372,13 @@
 <span class="cucinelli-card-category uppercase-spaced translation" data-en="Spaces" data-pl="Przestrzenie">Przestrzenie</span>
 <h3 class="serif cucinelli-card-title translation" data-en="Special Moments &lt;br&gt; in the Garden" data-pl="Wyjątkowe chwile &lt;br&gt; w ogrodzie">Wyjątkowe chwile <br/> w ogrodzie</h3>
 <p class="cucinelli-card-quote italic translation" data-en="“Unforgettable ceremonies surrounded by greenery &lt;br&gt; in the very heart of Warsaw.”" data-pl="„Niezapomniane ceremonie w otoczeniu zieleni &lt;br&gt; w samym sercu Warszawy.”">„Niezapomniane ceremonie w otoczeniu zieleni <br/> w samym sercu Warszawy.”</p>
-<a class="cucinelli-card-link uppercase-spaced translation" data-en="Explore Villa Foksal" data-pl="Poznaj Villę Foksal" href="#marki">Poznaj Villę Foksal</a>
+<a class="cucinelli-card-link uppercase-spaced translation" data-brand="vf" data-en="Explore Villa Foksal" data-pl="Poznaj Villę Foksal" href="#villa-foksal">Poznaj Villę Foksal</a>
 </div>
 </div>
 </div>
 </div>
 <!-- Full-width Catering Section -->
-<div class="section-catering-fullwidth">
+<div class="section-catering-fullwidth brand-direct-card" data-brand="cvf">
 <div class="catering-fullwidth-wrapper">
 <img alt="Catering Villa Foksal" class="catering-fullwidth-img" decoding="async" src="assets/catering_van.jpg"/>
 <div class="catering-overlay-bg"></div>
@@ -374,7 +386,7 @@
 <span class="cucinelli-card-category uppercase-spaced translation" data-en="Catering" data-pl="Catering">Catering</span>
 <h3 class="serif cucinelli-card-title translation" data-en="Experience of Quality" data-pl="Doświadczenie jakości">Doświadczenie jakości</h3>
 <p class="cucinelli-card-quote italic translation" data-en="“Taste, service and style &lt;br&gt; at its best”" data-pl="„Smak, serwis i styl &lt;br&gt; w najlepszym wydaniu”">„Smak, serwis i styl <br/> w najlepszym wydaniu”</p>
-<a class="cucinelli-card-link uppercase-spaced translation" data-brand="cvf" data-en="Explore Villa Foksal Catering" data-pl="Poznaj catering villa foksal" href="#">Poznaj catering villa foksal</a>
+<a class="cucinelli-card-link uppercase-spaced translation" data-brand="cvf" data-en="Explore Villa Foksal Catering" data-pl="Poznaj catering villa foksal" href="#catering">Poznaj catering villa foksal</a>
 </div>
 </div>
 </div>

@@ -448,27 +448,55 @@ body.scrolled .side-menu-header {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding-left: 18px;
-    margin-top: 14px;
-    border-left: 1px solid rgba(139, 29, 43, 0.25);
+    gap: 24px;
+    padding-left: 20px;
+    margin-top: 20px;
+    border-left: 2px solid rgba(139, 29, 43, 0.2);
 }
 
-.nav-sub-item {
-    color: var(--color-muted);
+.nav-sub-item.brand-nav-link {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: var(--transition-fast);
-    display: inline-block;
+    padding: 4px 0;
+    cursor: pointer;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.nav-sub-item:hover {
-    color: var(--color-bordeaux);
-    transform: translateX(4px);
+.nav-sub-item.brand-nav-link:hover {
+    transform: translateX(6px);
+    opacity: 0.8;
+}
+
+.nav-sub-logo {
+    display: block;
+    object-fit: contain;
+    width: auto;
+    transition: transform var(--transition-fast);
+}
+
+.nav-sub-logo.logo-vf {
+    height: 48px;
+    max-width: 160px;
+}
+
+.nav-sub-logo.logo-lu {
+    height: 32px;
+    max-width: 140px;
+}
+
+.nav-sub-logo.logo-cvf {
+    height: 34px;
+    max-width: 165px;
+}
+
+/* Home Page Direct Brand Cards */
+.brand-direct-card {
+    cursor: pointer;
+}
+
+.brand-direct-card .cucinelli-card-link {
+    pointer-events: auto;
 }
 
 .side-menu-footer {

@@ -84,57 +84,124 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 3. BRAND DETAILS OVERLAYS (SUBPAGES) ---
-    const brandBtns = document.querySelectorAll('.brand-btn, .cucinelli-card-link[data-brand]');
-    const closeOverlayBtns = document.querySelectorAll('.close-overlay');
-    const overlays = document.querySelectorAll('.brand-overlay');
+    // --- 3. BRAND DETAILS OVERLAYS (SUBPAGES) & UNIQUE URL HASH ROUTING ---
+    const closeOverlayBtns = document.querySelectorAll(".close-overlay");
+    const overlays = document.querySelectorAll(".brand-overlay");
 
-    function openBrandOverlay(brandId) {
+    const BRAND_HASH_MAP = {
+        "vf": "villa-foksal",
+        "lu": "lookup",
+        "cvf": "catering",
+        "zespol": "zespol",
+        "omnie": "o-mnie"
+    };
+
+    const HASH_BRAND_MAP = {
+        "villa-foksal": "vf",
+        "villafoksal": "vf",
+        "vf": "vf",
+        "lookup": "lu",
+        "lu": "lu",
+        "catering": "cvf",
+        "cvf": "cvf",
+        "catering-villa-foksal": "cvf",
+        "cateringvillafoksal": "cvf",
+        "zespol": "zespol",
+        "o-mnie": "omnie",
+        "omnie": "omnie"
+    };
+
+    function openBrandOverlay(brandId, updateUrl = true) {
+        overlays.forEach(overlay => {
+            if (overlay.id !== `overlay-${brandId}`) {
+                overlay.classList.remove("open");
+            }
+        });
+
         const targetOverlay = document.getElementById(`overlay-${brandId}`);
         if (targetOverlay) {
-            targetOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling the main page
+            targetOverlay.classList.add("open");
+            document.body.style.overflow = "hidden";
+            targetOverlay.scrollTop = 0;
+
+            if (updateUrl && BRAND_HASH_MAP[brandId]) {
+                const targetHash = `#${BRAND_HASH_MAP[brandId]}`;
+                if (window.location.hash !== targetHash) {
+                    history.pushState({ overlay: brandId }, "", targetHash);
+                }
+            }
         }
     }
 
-    function closeAllOverlays() {
+    function closeAllOverlays(updateUrl = true) {
+        let wasOpen = false;
         overlays.forEach(overlay => {
-            overlay.classList.remove('open');
+            if (overlay.classList.contains("open")) {
+                wasOpen = true;
+                overlay.classList.remove("open");
+            }
         });
-        document.body.style.overflow = ''; // Restore scrolling
+        document.body.style.overflow = "";
+
+        if (updateUrl && wasOpen) {
+            const currentHash = window.location.hash.substring(1).toLowerCase();
+            if (HASH_BRAND_MAP[currentHash]) {
+                history.pushState(null, "", window.location.pathname + window.location.search);
+            }
+        }
     }
 
-    brandBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const brand = btn.getAttribute('data-brand');
-            openBrandOverlay(brand);
+    // Direct Cards on Homepage
+    const directBrandCards = document.querySelectorAll(".brand-direct-card");
+    directBrandCards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            const brand = card.getAttribute("data-brand");
+            if (brand) {
+                e.preventDefault();
+                openBrandOverlay(brand);
+            }
         });
     });
 
-    // Support clicking anywhere on the brand column column on mobile devices or as fallback
-    const brandColumns = document.querySelectorAll('.brand-column');
+    // Buttons and links with data-brand
+    const brandBtns = document.querySelectorAll(".brand-btn, .cucinelli-card-link[data-brand]");
+    brandBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const brand = btn.getAttribute("data-brand");
+            if (brand) {
+                openBrandOverlay(brand);
+            }
+        });
+    });
+
+    // Support clicking anywhere on brand columns in #marki (intermediate looping videos) as alternative transition
+    const brandColumns = document.querySelectorAll(".brand-column");
     brandColumns.forEach(col => {
-        col.addEventListener('click', (e) => {
-            // Check if the button was clicked directly (to avoid double calls)
-            if (e.target.tagName !== 'BUTTON') {
-                const btn = col.querySelector('.brand-btn');
+        col.addEventListener("click", (e) => {
+            if (e.target.tagName !== "BUTTON") {
+                const btn = col.querySelector(".brand-btn");
                 if (btn) {
-                    const brand = btn.getAttribute('data-brand');
-                    openBrandOverlay(brand);
+                    const brand = btn.getAttribute("data-brand");
+                    if (brand) {
+                        openBrandOverlay(brand);
+                    }
                 }
             }
         });
     });
 
+    // Close buttons on overlays
     closeOverlayBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
             e.stopPropagation();
             closeAllOverlays();
         });
     });
 
-        // Brand sub-nav links trigger (Villa Foksal, LookUp, Catering Villa Foksal)
+    // Brand sub-nav links in drawer menu
     const brandNavLinks = document.querySelectorAll(".brand-nav-link");
     brandNavLinks.forEach(link => {
         link.addEventListener("click", (e) => {
@@ -148,39 +215,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Zespół overlay nav button trigger
-    const navZespolBtn = document.getElementById('nav-zespol-btn');
+    // Zespol overlay nav button trigger
+    const navZespolBtn = document.getElementById("nav-zespol-btn");
     if (navZespolBtn) {
-        navZespolBtn.addEventListener('click', (e) => {
+        navZespolBtn.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
             closeMenu();
-            openBrandOverlay('zespol');
+            openBrandOverlay("zespol");
         });
     }
 
     // O mnie (Founder) overlay nav button trigger
-    const navOmnieBtn = document.getElementById('nav-omnie-btn');
-    const cardOmnieBtn = document.getElementById('card-omnie-btn');
+    const navOmnieBtn = document.getElementById("nav-omnie-btn");
+    const cardOmnieBtn = document.getElementById("card-omnie-btn");
     [navOmnieBtn, cardOmnieBtn].forEach(btn => {
         if (btn) {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 closeMenu();
-                openBrandOverlay('omnie');
+                openBrandOverlay("omnie");
             });
         }
     });
 
     // Close overlay on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
             closeAllOverlays();
             closeMenu();
         }
     });
 
+    // URL Hash Routing support (Direct URLs: /#villa-foksal, /#lookup, /#catering)
+    function checkInitialHash() {
+        const rawHash = window.location.hash.substring(1).toLowerCase();
+        if (HASH_BRAND_MAP[rawHash]) {
+            setTimeout(() => {
+                openBrandOverlay(HASH_BRAND_MAP[rawHash], false);
+            }, 60);
+        }
+    }
+
+    window.addEventListener("popstate", () => {
+        const rawHash = window.location.hash.substring(1).toLowerCase();
+        if (HASH_BRAND_MAP[rawHash]) {
+            openBrandOverlay(HASH_BRAND_MAP[rawHash], false);
+        } else {
+            closeAllOverlays(false);
+        }
+    });
+
+    window.addEventListener("hashchange", () => {
+        const rawHash = window.location.hash.substring(1).toLowerCase();
+        if (HASH_BRAND_MAP[rawHash]) {
+            openBrandOverlay(HASH_BRAND_MAP[rawHash], false);
+        }
+    });
+
+    checkInitialHash();
 
     // --- 4. DYNAMIC ANNOUNCEMENT POP-UP ---
     const infoPopup = document.getElementById('info-popup');
