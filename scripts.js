@@ -134,6 +134,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+        // Brand sub-nav links trigger (Villa Foksal, LookUp, Catering Villa Foksal)
+    const brandNavLinks = document.querySelectorAll(".brand-nav-link");
+    brandNavLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMenu();
+            const brand = link.getAttribute("data-brand");
+            if (brand) {
+                openBrandOverlay(brand);
+            }
+        });
+    });
+
     // Zespół overlay nav button trigger
     const navZespolBtn = document.getElementById('nav-zespol-btn');
     if (navZespolBtn) {
