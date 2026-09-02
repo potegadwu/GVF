@@ -148,7 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = "";
 
         if (updateUrl && wasOpen) {
-            const current    // Footer Brand Items with logos
+            const currentHash = window.location.hash.substring(1).toLowerCase();
+            if (HASH_BRAND_MAP[currentHash]) {
+                history.pushState(null, "", window.location.pathname + window.location.search);
+            }
+        }
+    }
+
+    // Footer Brand Items with logos
     const footerBrandItems = document.querySelectorAll(".footer-brand-item[data-brand]");
     footerBrandItems.forEach(item => {
         item.addEventListener("click", (e) => {
@@ -159,13 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-Hash = window.location.hash.substring(1).toLowerCase();
-            if (HASH_BRAND_MAP[currentHash]) {
-                history.pushState(null, "", window.location.pathname + window.location.search);
-            }
-        }
-    }
 
     // Direct Cards on Homepage
     const directBrandCards = document.querySelectorAll(".brand-direct-card");
