@@ -580,7 +580,7 @@ body.scrolled .side-menu-header {
 /* SECTION 3: Motyw Przewodni */
 .section-motto {
     background-color: var(--bg-white); /* Full width white band */
-    padding: 80px 0;
+    padding-top: 80px; padding-bottom: 0;
     border-top: 1px solid rgba(11, 22, 44, 0.03);
     border-bottom: 1px solid rgba(11, 22, 44, 0.03);
 }
@@ -1360,7 +1360,7 @@ body.scrolled .side-menu-header {
     transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                 transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                 visibility 0.6s;
-    padding: 80px 0;
+    padding-top: 80px; padding-bottom: 0;
 }
 
 .brand-overlay.open {
@@ -1673,10 +1673,16 @@ body.scrolled .side-menu-header {
     color: var(--bg-cream);
     padding: 0 0 40px 0;
     border-top: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.overlay-footer {
+    margin-top: 80px;
 }
 
 .main-footer .container {
-    padding-top: 80px;
+    padding-top: 70px;
 }
 
 .footer-grid {
@@ -1684,51 +1690,52 @@ body.scrolled .side-menu-header {
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 60px;
+    align-items: start;
+}
+
+.footer-col.brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.footer-col.brand-col .footer-logo {
+    width: 185px;
+    height: auto;
+    margin-top: -2px; /* Precision alignment of top of VILLA FOKSAL with KONTAKT and NASZE MARKI */
+    margin-bottom: 20px;
+}
+
+.footer-col.brand-col .footer-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .brand-col p {
     font-size: 0.95rem;
-    opacity: 0.6;
+    opacity: 0.7;
     max-width: 320px;
-    margin-top: 15px;
-}
-
-/* White/cream version of SVG logo for dark backgrounds */
-.main-footer .logo-text-primary {
-    fill: var(--bg-cream);
-}
-
-.main-footer .logo-text-secondary {
-    fill: #A79380;
-}
-
-.overlay-body {
-    flex: 1;
-    overflow-y: auto;
-    padding-bottom: 40px;
-}
-
-.overlay-inner-scroll {
-    flex: 1;
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-}
-
-.footer-logo {
-    width: 160px;
-    height: auto;
-    margin-bottom: 20px;
+    margin-top: 0;
+    line-height: 1.6;
 }
 
 .footer-col h4 {
-    margin-bottom: 25px;
-    color: rgba(250,247,242,0.4);
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: rgba(250, 247, 242, 0.45);
+    line-height: 1.2;
 }
 
 .footer-col p {
     font-size: 0.95rem;
     line-height: 1.8;
+    margin-top: 0;
 }
 
 .footer-col a {
@@ -1738,25 +1745,68 @@ body.scrolled .side-menu-header {
 }
 
 .footer-col a:hover {
-    color: var(--color-bordeaux);
+    color: var(--color-gold, #c9a96e);
 }
 
 .footer-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     font-size: 0.95rem;
+    padding: 0;
+    margin: 0;
 }
 
-.footer-links a {
+.footer-brand-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
     color: var(--bg-cream);
     text-decoration: none;
-    transition: var(--transition-fast);
+    cursor: pointer;
+    transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-.footer-links a:hover {
-    color: var(--color-bordeaux);
+.footer-brand-item:hover {
+    color: var(--color-gold, #c9a96e);
+    transform: translateX(4px);
+}
+
+.footer-brand-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.footer-brand-logo {
+    display: block;
+    object-fit: contain;
+    width: auto;
+    transition: transform var(--transition-fast);
+}
+
+.footer-brand-logo.logo-vf-footer {
+    height: 26px;
+    max-width: 38px;
+}
+
+.footer-brand-logo.logo-lu-footer {
+    height: 16px;
+    max-width: 38px;
+}
+
+.footer-brand-logo.logo-cvf-footer {
+    height: 15px;
+    max-width: 38px;
+}
+
+.footer-brand-name {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
 }
 
 .footer-bottom {

@@ -7,23 +7,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. LANGUAGE SWITCHING SYSTEM ---
-    const langPlBtn = document.getElementById('lang-pl');
-    const langEnBtn = document.getElementById('lang-en');
     let currentLang = 'pl';
 
     function setLanguage(lang) {
         if (lang === currentLang) return;
         currentLang = lang;
 
-        // Toggle button states
+        // Toggle all button states across main footer and all overlay footers
+        const plButtons = document.querySelectorAll('.lang-btn-pl, #lang-pl');
+        const enButtons = document.querySelectorAll('.lang-btn-en, #lang-en');
+
         if (lang === 'pl') {
-            langPlBtn.classList.add('active');
-            langEnBtn.classList.remove('active');
+            plButtons.forEach(btn => btn.classList.add('active'));
+            enButtons.forEach(btn => btn.classList.remove('active'));
             document.documentElement.setAttribute('lang', 'pl');
             document.title = "Villa Foksal Group | Prestiż, tradycja, nowoczesność";
         } else {
-            langEnBtn.classList.add('active');
-            langPlBtn.classList.remove('active');
+            enButtons.forEach(btn => btn.classList.add('active'));
+            plButtons.forEach(btn => btn.classList.remove('active'));
             document.documentElement.setAttribute('lang', 'en');
             document.title = "Villa Foksal Group | Prestige, Tradition, Modernity";
         }
@@ -33,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(element => {
             const translationText = element.getAttribute(`data-${lang}`);
             if (translationText) {
-                // If the element is a button value or has complex text, we replace it safely
                 if (element.tagName === 'INPUT' && (element.type === 'button' || element.type === 'submit')) {
                     element.value = translationText;
                 } else {
@@ -43,8 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    langPlBtn.addEventListener('click', () => setLanguage('pl'));
-    langEnBtn.addEventListener('click', () => setLanguage('en'));
+    document.querySelectorAll('.lang-btn-pl, #lang-pl').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage('pl'));
+    });
+    document.querySelectorAll('.lang-btn-en, #lang-en').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage('en'));
+    });
 
 
     // --- 2. NAVIGATION DRAWER MENU ---
@@ -144,7 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = "";
 
         if (updateUrl && wasOpen) {
-            const currentHash = window.location.hash.substring(1).toLowerCase();
+            const current    // Footer Brand Items with logos
+    const footerBrandItems = document.querySelectorAll(".footer-brand-item[data-brand]");
+    footerBrandItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+            const brand = item.getAttribute("data-brand");
+            if (brand) {
+                e.preventDefault();
+                openBrandOverlay(brand);
+            }
+        });
+    });
+
+Hash = window.location.hash.substring(1).toLowerCase();
             if (HASH_BRAND_MAP[currentHash]) {
                 history.pushState(null, "", window.location.pathname + window.location.search);
             }
