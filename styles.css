@@ -2374,10 +2374,77 @@ body.scrolled .side-menu-header {
     grid-column: span 2;
     height: 600px;
 }
-.team-sales-drawing, .team-lukasz-video {
+.team-sales-drawing {
     height: auto;
     aspect-ratio: 1 / 1;
     min-height: 50vw;
+}
+/* FULL WIDTH items span both columns */
+.team-full-width {
+    grid-column: span 2;
+    width: 100%;
+}
+/* Sales drawing: full width, portrait aspect */
+.team-sales-drawing.team-full-width {
+    aspect-ratio: 16 / 7;
+    min-height: unset;
+    height: 55vw;
+    max-height: 640px;
+}
+/* Reczek portraits: half width each, square ish */
+.team-reczek {
+    aspect-ratio: 3 / 4;
+    min-height: unset;
+    height: auto;
+}
+.team-reczek .team-reczek-img {
+    object-position: center top;
+}
+/* Section divider labels between groups */
+.team-section-label {
+    background-color: var(--color-navy);
+    color: var(--bg-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 40px;
+    gap: 6px;
+    text-align: center;
+}
+.team-section-brand {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--color-burgundy, #7A1C2E);
+    font-weight: 700;
+}
+.team-section-name {
+    font-size: 1.05rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--bg-cream);
+    opacity: 0.85;
+}
+/* Manager video: full width, cinematic */
+.team-mgr-video-full {
+    aspect-ratio: 16 / 9;
+    min-height: unset;
+    height: auto;
+    max-height: 600px;
+}
+.team-mgr-video-full .team-comp-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* role label below name */
+.team-role {
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: rgba(250, 247, 242, 0.75);
+    margin: 4px 0 0 0;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
 }
 .team-comp-img {
     height: 100%;
