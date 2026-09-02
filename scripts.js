@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetOverlay = document.getElementById(`overlay-${brandId}`);
         if (targetOverlay) {
             targetOverlay.classList.add("open");
+            targetOverlay._openedAt = Date.now();
             document.body.style.overflow = "hidden";
             targetOverlay.scrollTop = 0;
 
@@ -213,6 +214,58 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
+            closeAllOverlays();
+        });
+    });
+
+    // Close overlays by clicking anywhere in the layer field (not only on close X)
+    overlays.forEach(overlay => {
+        let pointerStartX = 0;
+        let pointerStartY = 0;
+
+        overlay.addEventListener("pointerdown", (e) => {
+            pointerStartX = e.clientX;
+            pointerStartY = e.clientY;
+        }, { passive: true });
+
+        overlay.addEventListener("click", (e) => {
+            // Guard against instant closure right after opening
+            if (Date.now() - (overlay._openedAt || 0) < 250) {
+                return;
+            }
+
+            // Ignore drag or swipe gesture (if moved > 10px)
+            const moveDist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
+            if (moveDist > 10) {
+                return;
+            }
+
+            // Ignore text selection
+            const selection = window.getSelection();
+            if (selection && selection.toString().trim().length > 0) {
+                return;
+            }
+
+            // If clicked on close button, close
+            if (e.target.closest(".close-overlay")) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAllOverlays();
+                return;
+            }
+
+            // If clicked on an interactive element (link, button, video, etc.), let it perform its action
+            const isInteractive = e.target.closest(
+                "a, button, video, input, textarea, select, " +
+                ".scroll-to-top, #scroll-to-top-btn, " +
+                ".lang-btn, .language-switcher, " +
+                ".footer-brand-item, [data-brand]"
+            );
+            if (isInteractive) {
+                return;
+            }
+
+            // Clicked anywhere else in the field of the layer -> close the overlay!
             closeAllOverlays();
         });
     });
@@ -319,6 +372,16 @@ document.addEventListener('DOMContentLoaded', () => {
             brandsSection.scrollIntoView({ behavior: 'smooth' });
         }
     });
+
+    // Close info-popup by clicking anywhere on the popup layer (except the CTA button)
+    if (infoPopup) {
+        infoPopup.addEventListener('click', (e) => {
+            if (e.target.closest('#popup-cta') || e.target.closest('.info-popup-cta')) {
+                return;
+            }
+            closePopup();
+        });
+    }
 
     // --- 5. BRAND COLUMNS HOVER INTERACTION (Pause others on hover) ---
     const brandCols = document.querySelectorAll('.brand-column');
