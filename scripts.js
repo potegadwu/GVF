@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "cateringvillafoksal": "cvf",
         "zespol": "zespol",
         "o-mnie": "omnie",
+        "historia-dziedzictwo": "omnie",
+        "historia": "omnie",
         "omnie": "omnie"
     };
 
@@ -297,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // O mnie (Founder) overlay nav button trigger
     const navOmnieBtn = document.getElementById("nav-omnie-btn");
+    const historyCtaBtn = document.getElementById("card-omnie-btn");
     const cardOmnieBtn = document.getElementById("card-omnie-btn");
     [navOmnieBtn, cardOmnieBtn].forEach(btn => {
         if (btn) {

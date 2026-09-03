@@ -3246,3 +3246,147 @@ body.fullscreen-video-active #scroll-to-top-btn {
     .vf-mgr-name { font-size: 0.92rem; }
     .vf-mgr-role { font-size: 0.62rem; }
 }
+
+
+/* ==========================================================
+   Full-Width Historic Street Banner on Home ("po całości")
+   ========================================================== */
+.section-history-banner {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--color-navy);
+}
+
+.history-banner-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 460px;
+    max-height: 680px;
+    overflow: hidden;
+}
+
+.history-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+    filter: brightness(0.85) contrast(1.08);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.history-banner-wrapper:hover .history-banner-img {
+    transform: scale(1.03);
+}
+
+.history-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 22, 44, 0.65) 0%,
+        rgba(11, 22, 44, 0.2) 40%,
+        rgba(11, 22, 44, 0.3) 70%,
+        rgba(11, 22, 44, 0.95) 100%
+    );
+    pointer-events: none;
+}
+
+.history-banner-badge {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    z-index: 2;
+    color: var(--bg-cream);
+    max-width: 700px;
+}
+
+.history-badge-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    color: var(--color-burgundy-light, #c46d7e);
+    display: block;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+}
+
+.history-badge-title {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+    line-height: 1.2;
+}
+
+/* History CTA button under DNA title */
+.history-cta-wrap {
+    margin-top: 32px;
+}
+
+.history-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--bg-cream);
+    border: 1px solid rgba(250, 247, 242, 0.35);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.history-open-btn:hover {
+    background: var(--color-burgundy);
+    border-color: var(--color-burgundy);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(122, 28, 48, 0.4);
+}
+
+.biography-heritage-intro {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--color-navy);
+    max-width: 820px;
+    margin: 25px auto 10px auto;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+    .history-banner-wrapper {
+        height: 45vh;
+        min-height: 320px;
+    }
+    .history-banner-badge {
+        left: 20px;
+        right: 20px;
+        bottom: 25px;
+    }
+    .history-badge-title {
+        font-size: 1.4rem;
+    }
+    .history-open-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 12px 18px;
+    }
+    .biography-heritage-intro {
+        font-size: 0.95rem;
+        margin: 20px 15px 5px 15px;
+    }
+}
