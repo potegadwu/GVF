@@ -186,6 +186,36 @@ body.menu-open .top-bar-content span {
     color: rgba(250, 247, 242, 0.3);
 }
 
+
+/* Header language switcher (top-right of header) */
+.header-lang-switcher {
+    margin-left: 16px;
+}
+
+.header-lang-switcher .lang-btn {
+    color: rgba(250, 247, 242, 0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 0 4px;
+    font-weight: 400;
+}
+
+.header-lang-switcher .lang-btn.active,
+.header-lang-switcher .lang-btn:hover {
+    color: var(--bg-cream);
+}
+
+.header-lang-switcher .separator {
+    color: rgba(250, 247, 242, 0.2);
+    font-size: 0.65rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* Header */
 .main-header {
     background-color: var(--color-navy); /* Deep Navy background */
@@ -2318,11 +2348,29 @@ body.scrolled .side-menu-header {
     }
 }
 
+
+/* Team grid: full-width bleed inside overlay (overrides overlay-content constraints) */
+.section-team .team-images-comparison {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 60px;
+    margin-bottom: 0;
+}
+
+/* Bottom white breathing room before footer inside team overlay */
+.section-team {
+    padding-bottom: 80px !important;
+}
+
 /* SECTION 8: Zespół (Team Comparison) */
 .section-team {
     background-color: var(--bg-cream);
     border-top: 1px solid rgba(11, 22, 44, 0.03);
-    padding: 100px 0;
+    padding: 100px 0 80px 0;
 }
 .team-title {
     font-size: 3rem;
@@ -2338,9 +2386,9 @@ body.scrolled .side-menu-header {
 .team-images-comparison {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1cm;
-    row-gap: 1cm;
-    column-gap: 1cm;
+    gap: 0;
+    row-gap: 0;
+    column-gap: 0;
     width: 100%;
     max-width: 100%;
     margin-top: 50px;
@@ -2350,6 +2398,7 @@ body.scrolled .side-menu-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
+    gap: 0;
 }
 .team-row-1 {
     height: 520px; /* Lock height so photo and drawing are exactly equal */
@@ -2535,9 +2584,9 @@ body.scrolled .side-menu-header {
 @media (max-width: 768px) {
     .team-images-comparison {
         grid-template-columns: 1fr;
-        gap: 0.6cm;
-        row-gap: 0.6cm;
-        column-gap: 0.6cm;
+        gap: 0;
+        row-gap: 0;
+        column-gap: 0;
         margin-top: 35px;
     }
     .team-row-wrapper {
@@ -3023,17 +3072,18 @@ body.fullscreen-video-active #scroll-to-top-btn {
 }
 .portrait-credit-side {
     position: absolute;
-    right: -24px;
-    bottom: 8px;
-    transform-origin: bottom right;
+    left: calc(100% + 6px);
+    bottom: 12px;
+    transform-origin: 0 100%;
     transform: rotate(-90deg);
     white-space: nowrap;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 0.72rem; /* nieco mniejsze o punkt */
+    font-size: 0.72rem;
     color: var(--color-muted);
     letter-spacing: 0.05em;
     opacity: 0.85;
+    pointer-events: none;
 }
 
 /* ==========================================================
@@ -3110,8 +3160,8 @@ body.fullscreen-video-active #scroll-to-top-btn {
 
 @media (max-width: 768px) {
     .portrait-credit-side {
-        right: 4px;
-        bottom: 6px;
+        left: calc(100% + 4px);
+        bottom: 10px;
         font-size: 0.65rem;
     }
     .biography-outro {
@@ -3388,5 +3438,231 @@ body.fullscreen-video-active #scroll-to-top-btn {
     .biography-heritage-intro {
         font-size: 0.95rem;
         margin: 20px 15px 5px 15px;
+    }
+}
+
+
+/* ==========================================================
+   Pomniejszenie zdjec o 40% w dziale Historia i Droga Zalozyciela
+   oraz obsluga pary zdjec obok siebie (bio-gallery-pair)
+   ========================================================== */
+.overlay-omnie-content .portrait-image-wrapper {
+    max-width: 290px !important; /* Pomniejszenie o 40% z 450-500px */
+    margin: 0 auto;
+}
+
+.overlay-omnie-content .bio-gallery-item {
+    max-width: 450px; /* Pomniejszenie o 40% z 750px */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay-omnie-content .bio-gallery.single {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay-omnie-content .bio-gallery-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.overlay-omnie-content .bio-gallery-pair .bio-gallery-item {
+    max-width: 100%;
+    margin: 0;
+}
+
+.overlay-omnie-content .bio-gallery-image-wrapper {
+    max-height: 510px !important; /* Pomniejszenie o 40% z 850px */
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-white);
+}
+
+.overlay-omnie-content .bio-press-img {
+    max-height: 510px !important; /* Pomniejszenie o 40% z 850px */
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .overlay-omnie-content .bio-gallery-pair {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .overlay-omnie-content .bio-gallery-item {
+        max-width: 100%;
+    }
+    .overlay-omnie-content .bio-gallery-image-wrapper {
+        max-height: 380px !important;
+    }
+    .overlay-omnie-content .bio-press-img {
+        max-height: 380px !important;
+    }
+}
+
+
+/* ==========================================================
+   Full-Width Historic Street Banner (VF/LU Brand Card Style)
+   ========================================================== */
+.clickable-history-banner {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--color-navy);
+}
+
+.clickable-history-banner .history-banner-wrapper {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    min-height: 480px;
+    max-height: 640px;
+    overflow: hidden;
+}
+
+.clickable-history-banner .history-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    display: block;
+    filter: brightness(0.78) contrast(1.1);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.clickable-history-banner:hover .history-banner-img {
+    transform: scale(1.03);
+    filter: brightness(0.85) contrast(1.12);
+}
+
+.clickable-history-banner .history-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 22, 44, 0.45) 0%,
+        rgba(11, 22, 44, 0.15) 30%,
+        rgba(11, 22, 44, 0.6) 70%,
+        rgba(11, 22, 44, 0.95) 100%
+    );
+    pointer-events: none;
+}
+
+.clickable-history-banner .history-brand-content {
+    position: absolute;
+    bottom: 50px;
+    left: 70px;
+    z-index: 5;
+    max-width: 660px;
+    pointer-events: auto;
+    text-align: left;
+    transform: translateY(0) !important;
+}
+
+.clickable-history-banner .history-brand-content .brand-num {
+    font-size: 2.2rem;
+    font-family: var(--font-serif);
+    color: var(--color-burgundy-light, #c46d7e);
+    margin-bottom: 6px;
+    display: block;
+    opacity: 0.9;
+    line-height: 1;
+}
+
+.clickable-history-banner .history-brand-content .brand-title {
+    font-size: 2.3rem;
+    color: var(--bg-cream);
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+    line-height: 1.15;
+}
+
+.clickable-history-banner .history-brand-content .brand-short-desc {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: rgba(250, 247, 242, 0.9);
+    margin-bottom: 24px !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    opacity: 1 !important;
+    max-height: 120px !important;
+    overflow: visible !important;
+}
+
+.clickable-history-banner .history-brand-content .brand-btn {
+    opacity: 1 !important;
+    display: inline-block !important;
+    border: 1px solid var(--bg-cream) !important;
+    background: transparent;
+    color: var(--bg-cream) !important;
+    padding: 13px 28px !important;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.clickable-history-banner:hover .brand-btn {
+    background-color: var(--bg-cream) !important;
+    color: var(--color-navy) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Logo VFG new adjustments */
+.logo-vfg-new {
+    height: 46px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+    .clickable-history-banner .history-banner-wrapper {
+        height: 520px;
+        min-height: 440px;
+    }
+    .clickable-history-banner .history-brand-content {
+        left: 24px;
+        right: 24px;
+        bottom: 35px;
+    }
+    .clickable-history-banner .history-brand-content .brand-num {
+        font-size: 1.6rem;
+    }
+    .clickable-history-banner .history-brand-content .brand-title {
+        font-size: 1.65rem;
+    }
+    .clickable-history-banner .history-brand-content .brand-short-desc {
+        font-size: 0.9rem;
+        margin-bottom: 18px !important;
+    }
+    .logo-vfg-new {
+        height: 38px;
     }
 }

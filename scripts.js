@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "lu": "lookup",
         "cvf": "catering",
         "zespol": "zespol",
-        "omnie": "o-mnie"
+        "omnie": "historia-i-dziedzictwo"
     };
 
     const HASH_BRAND_MAP = {
@@ -111,10 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "catering-villa-foksal": "cvf",
         "cateringvillafoksal": "cvf",
         "zespol": "zespol",
+        "historia-i-dziedzictwo": "omnie",
+        "historia": "omnie",
+        "dziedzictwo": "omnie",
         "o-mnie": "omnie",
         "historia-dziedzictwo": "omnie",
         "historia": "omnie",
-        "omnie": "omnie"
+        "omnie": "historia-i-dziedzictwo"
     };
 
     function openBrandOverlay(brandId, updateUrl = true) {
@@ -590,5 +593,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+    // Clickable History Banner on Home -> opens historia-i-dziedzictwo overlay
+    const historyBanner = document.getElementById("banner-historia-dziedzictwo");
+    if (historyBanner) {
+        historyBanner.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.hash = "historia-i-dziedzictwo";
+            const omnieOverlay = document.getElementById("overlay-omnie");
+            if (omnieOverlay) {
+                omnieOverlay.classList.add("active");
+                document.body.classList.add("overlay-open");
+            }
+        });
+    }
 
 });

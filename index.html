@@ -291,10 +291,15 @@
 </button>
 <div class="logo-container">
 <a aria-label="Strona główna Villa Foksal Group" class="logo-link" href="#">
-<img alt="Villa Foksal Group Logo" class="logo-svg" decoding="async" src="assets/logo.svg"/>
+<img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" src="assets/logo_vfg_transparent.png"/>
 </a>
 </div>
 <div class="header-right">
+<div class="language-switcher header-lang-switcher">
+<button class="lang-btn lang-btn-pl active">PL</button>
+<span class="separator">|</span>
+<button class="lang-btn lang-btn-en">EN</button>
+</div>
 </div>
 </div>
 </header>
@@ -305,7 +310,7 @@
 <!-- Navy blue logo & header representation -->
 <div class="side-menu-header">
 <div class="side-menu-logo-wrapper">
-<img alt="Villa Foksal Group Logo" class="logo-svg" decoding="async" src="assets/logo.svg"/>
+<img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" src="assets/logo_vfg_transparent.png"/>
 </div>
 <button aria-label="Close menu" class="close-menu" id="close-menu-btn">×</button>
 </div>
@@ -332,7 +337,7 @@
 </li>
 </ul>
 </li>
-<li><a class="nav-item line-split translation" data-en="HISTORY &amp; HERITAGE<br>FOUNDER'S JOURNEY" data-pl="HISTORIA I DZIEDZICTWO<br>DROGA ZAŁOŻYCIELA" href="#historia" id="nav-omnie-btn">HISTORIA I DZIEDZICTWO<br/>DROGA ZAŁOŻYCIELA</a></li>
+<li><a class="nav-item line-split translation" data-en="HISTORY &amp; HERITAGE<br>FOUNDER'S JOURNEY" data-pl="Historia i dziedzictwo<br>Droga założyciela" href="#historia-i-dziedzictwo" id="nav-omnie-btn">Historia i dziedzictwo<br/>Droga założyciela</a></li>
 <li><a class="nav-item translation" data-en="Team" data-pl="Zespół" href="#" id="nav-zespol-btn">Zespół</a></li>
 <li><a class="nav-item translation" data-en="Contact" data-pl="Kontakt" href="#kontakt">Kontakt</a></li>
 </ul>
@@ -384,18 +389,16 @@
 </div>
 </div>
 </section>
-<!-- Section: Full-Width Historic Street Banner ("po całości") -->
-<section class="section-history-banner">
-<div class="history-banner-wrapper">
-<img alt="Ulica Foksal w Warszawie — Dziedzictwo od 1776 roku" class="history-banner-img" decoding="async" loading="lazy" src="assets/na_home_zdjecie_do_top_strony.jpg"/>
-<div class="history-banner-overlay"></div>
-<div class="history-banner-badge">
-<span class="history-badge-subtitle uppercase-spaced translation" data-en="WARSAW • FOKSAL STREET" data-pl="WARSZAWA • ULICA FOKSAL">WARSZAWA • ULICA FOKSAL</span>
-<h3 class="serif history-badge-title translation" data-en="The Story of an Iconic Address Since 1776" data-pl="Historia ikonicznego adresu od 1776 roku">Historia ikonicznego adresu od 1776 roku</h3>
+<section class="section-motto">
+<div class="container text-center">
+<div class="motto-box">
+<h3 class="serif accent-color translation" data-en="Places that &lt;br class='mobile-break'&gt;remain" data-pl="Miejsca, &lt;br class='mobile-break'&gt;które zostają">Miejsca, <br class="mobile-break"/>które zostają</h3>
+<p class="motto-desc translation" data-en="A story of spaces where Warsaw celebrates its most important moments." data-pl="Opowieść o przestrzeniach, w których Warszawa świętuje swoje najważniejsze chwile.">
+                        Opowieść o przestrzeniach, w których Warszawa świętuje swoje najważniejsze chwile.
+                    </p>
 </div>
 </div>
 </section>
-
 <!-- Section: Dziedzictwo VFG -->
 <section class="section-history" id="historia">
 <div class="container">
@@ -403,11 +406,7 @@
 <div class="history-left">
 <span class="section-subtitle uppercase-spaced translation" data-en="Heritage" data-pl="Dziedzictwo">Dziedzictwo</span>
 <h2 class="serif section-title translation" data-en="Hospitality<br>in our<br>DNA" data-pl="Gościnność<br>wpisana<br>w DNA">Gościnność<br/>wpisana<br/>w DNA</h2>
-<div class="history-cta-wrap">
-<a class="history-open-btn uppercase-spaced translation" data-en="Explore Full Story &amp; Founder's Journey →" data-pl="Poznaj pełną historię i drogę założyciela →" href="#o-mnie" id="card-omnie-btn">
-Poznaj pełną historię i drogę założyciela →
-</a>
-</div>
+
 </div>
 <div class="history-right text-muted">
 <p class="translation" data-en="The foundation of the group became Villa Foksal, which has been in the hands of Paweł Chmielewski for over two decades. It was he who restored the splendor to the historic gardens, meticulously combining tradition with modernity and continuing the multi-generational heritage of this address. By creating Villa Foksal Group, we combine our unique spaces and extensive experience so that the highest culture of hospitality continues here uninterrupted for decades to come." data-pl="Fundamentem grupy stała się Villa Foksal, która od ponad dwóch dekad znajduje się w rękach Pawła Chmielewskiego. To on przywrócił blask historycznym ogrodom, z pietyzmem łącząc tradycję z nowoczesnością i kontynuując wielopokoleniowe dziedzictwo tego adresu. Tworząc Villa Foksal Group, łączymy nasze unikalne przestrzenie i wieloletnie doświadczenie, aby najwyższa kultura gościnności trwała tu nieprzerwanie przez kolejne dekady.">
@@ -419,20 +418,26 @@ Poznaj pełną historię i drogę założyciela →
 <p class="translation" data-en="It was in this very place in 1789 that Jean-Pierre Blanchard made one of the first balloon flights in Poland. Over the centuries, the character of this space evolved: from a garden avenue, through the palatial residences of the Zamoyski family, to the interwar Café Bodo and the insurgent barricades of the Warsaw Uprising. The rich history of Foksal Street and its salon character form a strong historical foundation for Paweł Chmielewski's activities on the Warsaw restaurant and event market." data-pl="To właśnie w tym miejscu w 1789 roku Jean-Pierre Blanchard dokonał jednego z pierwszych w Polsce lotów balonem. Przez stulecia charakter tej przestrzeni ewoluował: od ogrodowej alei, przez pałacowe rezydencje rodu Zamoyskich, aż po międzywojenną Café Bodo i powstańcze barykady II linii obrony Powiśla. Dawne dzieje ulicy Foksal i jej salonowy charakter stanowią silną historyczną podwalinę działań Pawła Chmielewskiego na warszawskim rynku restauracyjnym i eventowym.">
                             To właśnie w tym miejscu w 1789 roku Jean-Pierre Blanchard dokonał jednego z pierwszych w Polsce lotów balonem. Przez stulecia charakter tej przestrzeni ewoluował: od ogrodowej alei, przez pałacowe rezydencje rodu Zamoyskich, aż po międzywojenną Café Bodo i powstańcze barykady II linii obrony Powiśla. Dawne dzieje ulicy Foksal i jej salonowy charakter stanowią silną historyczną podwalinę działań Pawła Chmielewskiego na warszawskim rynku restauracyjnym i eventowym.
                         </p>
+<p><a class="history-open-btn uppercase-spaced translation" data-en="Explore full story &amp; founder's journey →" data-pl="Poznaj pełną historię i drogę założyciela →" href="https://villa-foksal-group.pages.dev/#o-mnie" id="card-omnie-btn">Poznaj pełną historię i drogę założyciela →</a></p>
 </div>
 </div>
 </div>
 </section>
-<section class="section-motto">
-<div class="container text-center">
-<div class="motto-box">
-<h3 class="serif accent-color translation" data-en="Places that &lt;br class='mobile-break'&gt;remain" data-pl="Miejsca, &lt;br class='mobile-break'&gt;które zostają">Miejsca, <br class="mobile-break"/>które zostają</h3>
-<p class="motto-desc translation" data-en="A story of spaces where Warsaw celebrates its most important moments." data-pl="Opowieść o przestrzeniach, w których Warszawa świętuje swoje najważniejsze chwile.">
-                        Opowieść o przestrzeniach, w których Warszawa świętuje swoje najważniejsze chwile.
-                    </p>
+
+<!-- Section: Full-Width Historic Street Banner with VF/LU Typography & Layout -->
+<section class="section-history-banner clickable-history-banner" id="banner-historia-dziedzictwo" data-href="#historia-i-dziedzictwo">
+<div class="history-banner-wrapper">
+<img alt="Ulica Foksal w Warszawie — Dziedzictwo od 1776 roku" class="history-banner-img" decoding="async" loading="lazy" src="assets/na_home_zdjecie_do_top_strony.jpg"/>
+<div class="history-banner-overlay"></div>
+<div class="brand-column-content history-brand-content">
+<span class="brand-num">04</span>
+<h3 class="brand-title serif translation" data-en="HISTORY &amp; HERITAGE" data-pl="Historia i dziedzictwo">Historia i dziedzictwo</h3>
+<p class="brand-short-desc translation" data-en="From 18th-century Vauxhall gardens to contemporary icons of hospitality. Discover the founder's journey and over 250 years of history." data-pl="Od XVIII-wiecznych ogrodów Vauxhall aż po współczesne ikony gościnności. Odkryj drogę założyciela i ponad 250 lat historii.">Od XVIII-wiecznych ogrodów Vauxhall aż po współczesne ikony gościnności. Odkryj drogę założyciela i ponad 250 lat historii.</p>
+<button class="brand-btn translation" data-en="Discover our story" data-pl="Poznaj historię">Poznaj historię</button>
 </div>
 </div>
 </section>
+
 <!-- Section: Three Vertical Banners (Portfolio Marek) -->
 
 </main>
@@ -609,11 +614,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
@@ -754,11 +755,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
@@ -895,11 +892,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
@@ -1015,7 +1008,7 @@ Poznaj pełną historię i drogę założyciela →
 </div>
 <div class="team-sales-col">
 <span class="sales-onphoto-name">Robert Graliński</span>
-<span class="sales-onphoto-role translation" data-en="General Director" data-pl="Dyrektor Generalny">Dyrektor Generalny</span>
+<span class="sales-onphoto-role translation" data-en="General Director" data-pl="Dyrektor generalny">Dyrektor generalny</span>
 </div>
 <div class="team-sales-col">
 <span class="sales-onphoto-name">Małgorzata Oszup</span>
@@ -1030,7 +1023,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="team-overlay-text">
 <span class="team-category uppercase-spaced">LOOKUP SKY EVENTS</span>
 <h3 class="team-title serif">Bartosz Reczek</h3>
-<p class="team-role translation" data-en="General Director" data-pl="Dyrektor Generalny">Dyrektor Generalny</p>
+<p class="team-role translation" data-en="General Director" data-pl="Dyrektor generalny">Dyrektor generalny</p>
 </div>
 </div>
 <div class="team-comp-wrapper team-reczek">
@@ -1038,7 +1031,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="team-overlay-text">
 <span class="team-category uppercase-spaced">LOOKUP SKY EVENTS</span>
 <h3 class="team-title serif">Łukasz Reczek</h3>
-<p class="team-role translation" data-en="Operations Director" data-pl="Dyrektor Operacyjny">Dyrektor Operacyjny</p>
+<p class="team-role translation" data-en="Operations Director" data-pl="Dyrektor operacyjny">Dyrektor operacyjny</p>
 </div>
 </div>
 
@@ -1076,11 +1069,7 @@ Poznaj pełną historię i drogę założyciela →
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
@@ -1144,8 +1133,8 @@ Poznaj pełną historię i drogę założyciela →
 <!-- Section: About Me (Paweł Chmielewski) -->
 <section class="section-about-me" id="o-mnie" style="padding: 0; background: transparent;">
 <div class="container-narrow text-center" style="max-width: 1000px; margin: 0 auto; padding-top: 40px;">
-<span class="section-subtitle uppercase-spaced translation" data-en="Heritage &amp; Founder" data-pl="Dziedzictwo i Założyciel">Dziedzictwo i Założyciel</span>
-<h2 class="serif about-me-title translation" data-en="History &amp; Founder's Journey" data-pl="Historia i Droga Założyciela">Historia i Droga Założyciela</h2>
+<span class="section-subtitle uppercase-spaced translation" data-en="Heritage &amp; Founder" data-pl="Dziedzictwo i założyciel">Dziedzictwo i założyciel</span>
+<h2 class="serif about-me-title translation" data-en="History &amp; Founder's Journey" data-pl="Historia i droga założyciela">Historia i droga założyciela</h2>
 
 <!-- Main Portrait with Side Photographer Credit -->
 <div class="portrait-image-container">
@@ -1178,19 +1167,32 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="Pub That's it na ulicy Marszałkowskiej" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_pub_thats_it.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="NEW PUB" data-pl="NOWY PUB">NOWY PUB</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="NEW PUB" data-pl="Nowy pub">Nowy pub</div>
 <div class="bio-press-card-date">1990</div>
 <div class="bio-press-card-quote italic translation" data-en="„That's it on Marszałkowska Street with Walk Away playing in the background was an atmosphere straight out of a British pub...”" data-pl="„That's it przy Marszałkowskiej z zespołem Walk Away grającym w tle to atmosfera rodem z brytyjskiego pubu...”">„That's it przy Marszałkowskiej z zespołem Walk Away grającym w tle to atmosfera rodem z brytyjskiego pubu...”</div>
 </div>
 </div>
+<div class="bio-gallery-pair">
 <div class="bio-gallery-item">
 <div class="bio-gallery-image-wrapper">
-<img alt="Hamburgera czar — Bar Quick" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_hamburgera_czar.jpg"/>
+<img alt="Hamburgera czar – Bar Quick" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_hamburgera_czar.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="HAMBURGER'S CHARM" data-pl="HAMBURGERA CZAR">HAMBURGERA CZAR</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="HAMBURGER'S CHARM" data-pl="Hamburgera czar">Hamburgera czar</div>
 <div class="bio-press-card-date">1990</div>
-<div class="bio-press-card-quote italic translation" data-en="„Bar Quick is a true revelation and the best burger bar in the capital...”" data-pl="„Bar Quick to prawdziwa rewelacja i najlepszy w stolicy bar hamburgerowy...”">„Bar Quick to prawdziwa rewelacja i najlepszy w stolicy bar hamburgerowy...”</div>
+<div class="bio-press-card-quote italic translation" data-en="“Bar Quick is a true revelation and the best burger bar in the capital...”" data-pl="„Bar Quick to prawdziwa rewelacja i najlepszy w stolicy bar hamburgerowy...”">„Bar Quick to prawdziwa rewelacja i najlepszy w stolicy bar hamburgerowy...”</div>
+</div>
+</div>
+<div class="bio-gallery-item">
+<div class="bio-gallery-image-wrapper">
+<img alt="Paweł Chmielewski i pierwsza burgerownia w Warszawie" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_pawel_pierwsza_burgerownia.jpg"/>
+</div>
+<div class="bio-press-card">
+<div class="bio-press-card-title uppercase-spaced translation" data-en="BAR QUICK • 1990" data-pl="Bar Quick • 1990">Bar Quick • 1990</div>
+<div class="bio-press-card-date">1990</div>
+<div class="bio-press-card-quote italic translation" data-en="“Paweł Chmielewski and the first burger bar in Warsaw...”" data-pl="„Paweł Chmielewski i pierwsza burgerownia w Warszawie...”">„Paweł Chmielewski i pierwsza burgerownia w Warszawie...”</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1211,7 +1213,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="Smak Zachęty, magazyn PANI" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_smak_zachety.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="TASTE OF ZACHĘTA" data-pl="SMAK ZACHĘTY">SMAK ZACHĘTY</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="TASTE OF ZACHĘTA" data-pl="Smak Zachęty">Smak Zachęty</div>
 <div class="bio-press-card-date">1996</div>
 <div class="bio-press-card-quote italic translation" data-en="„The basement transformed from Cinderella into an elegant restaurant. Lower Zachęta attracts art bohemia and business...”" data-pl="„Piwnica zmieniła się z Kopciuszka w elegancką restaurację. Dolna Zachęta przyciąga bohemę artystyczną i świat biznesu...”">„Piwnica zmieniła się z Kopciuszka w elegancką restaurację. Dolna Zachęta przyciąga bohemę artystyczną i świat biznesu...”</div>
 </div>
@@ -1223,7 +1225,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="bio-step">
 <div class="bio-text">
 <h4 class="serif bio-year">1999</h4>
-<h3 class="serif bio-step-heading translation" data-en="Villa Foksal — From Iconic Restaurant to Event Icon" data-pl="Villa Foksal — Od kultowej restauracji do ikony wydarzeń">Villa Foksal — Od kultowej restauracji do ikony wydarzeń</h3>
+<h3 class="serif bio-step-heading translation" data-en="Villa Foksal — From Iconic Restaurant to Event Icon" data-pl="Villa Foksal – od kultowej restauracji do ikony wydarzeń">Villa Foksal – od kultowej restauracji do ikony wydarzeń</h3>
 <p class="translation" data-en="In 1999, Villa Foksal was born. Transforming the ground floor of the historic Journalist's House on Foksal Street, we created a destination that swiftly became the cultural salon of Warsaw and one of the capital's premier fine-dining landmarks. For years, it welcomed luminaries from culture, media, and diplomacy. Over the past 15 years, Villa Foksal has thoughtfully evolved into an exclusive private hire estate — today standing as a prestigious sanctuary for galas, banquets, summits, and bespoke private celebrations, all powered by our own signature catering operation, Catering Villa Foksal." data-pl="W 1999 roku narodziła się Villa Foksal. Przejmując parter dawnego Domu Dziennikarza przy ul. Foksal, stworzyliśmy miejsce, które błyskawicznie stało się salonem towarzyskim Warszawy i jedną z najbardziej cenionych restauracji fine dining w stolicy. Przez lata gościliśmy wybitne postaci ze świata kultury, mediów i dyplomacji. Ostatnie 15 lat to świadoma ewolucja w stronę ekskluzywnego miejsca na wynajem — dziś to prestiżowa przestrzeń na gale, bankiety, konferencje oraz wyjątkowe uroczystości prywatne, realizowane w oparciu o własne, bezkompromisowe zaplecze kulinarne Catering Villa Foksal.">
     W 1999 roku narodziła się Villa Foksal. Przejmując parter dawnego Domu Dziennikarza przy ul. Foksal, stworzyliśmy miejsce, które błyskawicznie stało się salonem towarzyskim Warszawy i jedną z najbardziej cenionych restauracji fine dining w stolicy. Przez lata gościliśmy wybitne postaci ze świata kultury, mediów i dyplomacji. Ostatnie 15 lat to świadoma ewolucja w stronę ekskluzywnego miejsca na wynajem — dziś to prestiżowa przestrzeń na gale, bankiety, konferencje oraz wyjątkowe uroczystości prywatne, realizowane w oparciu o własne, bezkompromisowe zaplecze kulinarne Catering Villa Foksal.
 </p>
@@ -1234,7 +1236,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="Świetny adres, Magazyn PANI" class="bio-press-img" decoding="async" loading="lazy" src="assets/bio_swietny_adres.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="GREAT ADDRESS" data-pl="ŚWIETNY ADRES">ŚWIETNY ADRES</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="GREAT ADDRESS" data-pl="Świetny adres">Świetny adres</div>
 <div class="bio-press-card-date">1999</div>
 <div class="bio-press-card-quote italic translation" data-en="„Columns and a fountain from the set of the film Quo Vadis appeared in the garden. This place united the worlds of media, politics and business...”" data-pl="„W ogrodzie pojawiły się kolumny i fontanna z planu filmu Quo Vadis. To miejsce połączyło światy mediów, polityki i biznesu...”">„W ogrodzie pojawiły się kolumny i fontanna z planu filmu Quo Vadis. To miejsce połączyło światy mediów, polityki i biznesu...”</div>
 </div>
@@ -1246,7 +1248,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="bio-step">
 <div class="bio-text">
 <h4 class="serif bio-year">2015</h4>
-<h3 class="serif bio-step-heading translation" data-en="Catering Villa Foksal — Art of Hospitality Beyond Borders" data-pl="Catering Villa Foksal — Kunszt gościnności bez granic">Catering Villa Foksal — Kunszt gościnności bez granic</h3>
+<h3 class="serif bio-step-heading translation" data-en="Catering Villa Foksal — Art of Hospitality Beyond Borders" data-pl="Catering Villa Foksal – kunszt gościnności bez granic">Catering Villa Foksal – kunszt gościnności bez granic</h3>
 <p class="translation" data-en="In 2015, the natural progression of our growth led to the launch of our dedicated brand, Catering Villa Foksal. We translated our culinary artistry, decades of expertise, and impeccable service standards far beyond the walls of our Foksal estate. Our catering seamlessly complements our venue portfolio — delivering bespoke, flawless execution anywhere in Poland, from private residences to grand congress arenas. We also take immense pride in orchestrating high-level international projects, including premier hospitality for foreign delegations at the World Economic Forum in Davos 2026." data-pl="W 2015 roku naturalnym krokiem w rozwoju było powołanie wyspecjalizowanej marki Catering Villa Foksal. Przenieśliśmy naszą mistrzowską kuchnię, wieloletnie know-how i najwyższą kulturę serwisu poza mury rezydencji przy Foksal. Catering stanowi idealne dopełnienie oferty naszych przestrzeni stacjonarnych — z pełnym profesjonalizmem organizujemy wydarzenia w dowolnie wybranym miejscu w całej Polsce, od prywatnych posiadłości po wielotysiączne hale targowe. Z dumą realizujemy także prestiżowe projekty międzynarodowe, w tym obsługę zagranicznych delegacji podczas Światowego Forum Ekonomicznego w Davos 2026.">
     W 2015 roku naturalnym krokiem w rozwoju było powołanie wyspecjalizowanej marki Catering Villa Foksal. Przenieśliśmy naszą mistrzowską kuchnię, wieloletnie know-how i najwyższą kulturę serwisu poza mury rezydencji przy Foksal. Catering stanowi idealne dopełnienie oferty naszych przestrzeni stacjonarnych — z pełnym profesjonalizmem organizujemy wydarzenia w dowolnie wybranym miejscu w całej Polsce, od prywatnych posiadłości po wielotysiączne hale targowe. Z dumą realizujemy także prestiżowe projekty międzynarodowe, w tym obsługę zagranicznych delegacji podczas Światowego Forum Ekonomicznego w Davos 2026.
 </p>
@@ -1257,7 +1259,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="Catering Villa Foksal" class="bio-press-img" decoding="async" loading="lazy" src="assets/catering_van.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="BESPOKE CATERING" data-pl="AUTORSKI CATERING">AUTORSKI CATERING</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="BESPOKE CATERING" data-pl="Autorski catering">Autorski catering</div>
 <div class="bio-press-card-date">2015</div>
 <div class="bio-press-card-quote italic translation" data-en="„Culinary artistry, bespoke menus and uncompromising hospitality standards across Poland and worldwide...”" data-pl="„Kunszt kulinarny, autorskie menu i bezkompromisowa jakość serwisu w dowolnym miejscu w Polsce i na świecie...”">„Kunszt kulinarny, autorskie menu i bezkompromisowa jakość serwisu w dowolnym miejscu w Polsce i na świecie...”</div>
 </div>
@@ -1269,7 +1271,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="bio-step">
 <div class="bio-text">
 <h4 class="serif bio-year">2023</h4>
-<h3 class="serif bio-step-heading translation" data-en="LookUp Sky Events — A Venue in the Clouds of New Warsaw" data-pl="LookUp Sky Events — Przestrzeń w chmurach nowej Warszawy">LookUp Sky Events — Przestrzeń w chmurach nowej Warszawy</h3>
+<h3 class="serif bio-step-heading translation" data-en="LookUp Sky Events — A Venue in the Clouds of New Warsaw" data-pl="LookUp Sky Events – przestrzeń w chmurach nowej Warszawy">LookUp Sky Events – przestrzeń w chmurach nowej Warszawy</h3>
 <p class="translation" data-en="In 2023, we looked to the horizon and unveiled LookUp Sky Events — a breathtaking event venue situated on the 41st and 42nd floors of the Skyliner tower, 190 meters above ground. Featuring a striking 16-meter-high viewing volume with panoramic vistas across the capital, LookUp captivated global critics, winning the prestigious Restaurant & Bar Design Awards in London and an HD Awards nomination in New York. LookUp stands as the definitive address for visionary summits, corporate launches, and world-class celebrations." data-pl="W 2023 roku spojrzeliśmy w niebo, otwierając LookUp Sky Events — spektakularne centrum eventowe na 41. i 42. piętrze wieżowca Skyliner, 190 metrów nad ziemią. Nowoczesna, 16-metrowa przestrzeń widokowa z panoramicznym widokiem na stolicę zachwyciła międzynarodowe jury, zdobywając główną nagrodę Restaurant & Bar Design Awards w Londynie oraz prestiżową nominację do HD Awards w Nowym Jorku. LookUp to synonim ultranowoczesnych konferencji, premier biznesowych i bankietów z najwyższej światowej półki.">
     W 2023 roku spojrzeliśmy w niebo, otwierając LookUp Sky Events — spektakularne centrum eventowe na 41. i 42. piętrze wieżowca Skyliner, 190 metrów nad ziemią. Nowoczesna, 16-metrowa przestrzeń widokowa z panoramicznym widokiem na stolicę zachwyciła międzynarodowe jury, zdobywając główną nagrodę Restaurant & Bar Design Awards w Londynie oraz prestiżową nominację do HD Awards w Nowym Jorku. LookUp to synonim ultranowoczesnych konferencji, premier biznesowych i bankietów z najwyższej światowej półki.
 </p>
@@ -1280,7 +1282,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="LookUp Sky Events — Architektura wnętrza" class="bio-press-img" decoding="async" loading="lazy" src="assets/lookup_architektura.jpg"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="LOOKUP SKY EVENTS" data-pl="LOOKUP SKY EVENTS">LOOKUP SKY EVENTS</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="LOOKUP SKY EVENTS" data-pl="LookUp Sky Events">LookUp Sky Events</div>
 <div class="bio-press-card-date">2023</div>
 <div class="bio-press-card-quote italic translation" data-en="„A modern event space 160 meters above ground — spectacular panorama and award-winning interior architecture...”" data-pl="„Nowoczesna przestrzeń 160 metrów nad ziemią — spektakularna panorama stolicy i nagradzana architektura wnętrz...”">„Nowoczesna przestrzeń 160 metrów nad ziemią — spektakularna panorama stolicy i nagradzana architektura wnętrz...”</div>
 </div>
@@ -1303,7 +1305,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <img alt="Villa Foksal Group — Ewolucja Prestiżu" class="bio-press-img" decoding="async" loading="lazy" src="assets/villa_foksal_group_book.png"/>
 </div>
 <div class="bio-press-card">
-<div class="bio-press-card-title uppercase-spaced translation" data-en="VILLA FOKSAL GROUP" data-pl="VILLA FOKSAL GROUP">VILLA FOKSAL GROUP</div>
+<div class="bio-press-card-title uppercase-spaced translation" data-en="VILLA FOKSAL GROUP" data-pl="Villa Foksal Group">Villa Foksal Group</div>
 <div class="bio-press-card-date translation" data-en="Today" data-pl="Dziś">Dziś</div>
 <div class="bio-press-card-quote italic translation" data-en="„Consolidation of a quarter-century of expertise, culinary mastery, and passion into a single prestigious hospitality group...”" data-pl="„Scalenie blisko ŝwierćwiecza doświadczeń, pasji i trzech unikalnych marek w jedną synergiczną całość pod wspólnym niebem...”">„Scalenie blisko ŝwierćwiecza doświadczeń, pasji i trzech unikalnych marek w jedną synergiczną całość pod wspólnym niebem...”</div>
 </div>
@@ -1322,11 +1324,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
@@ -1398,11 +1396,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="top-bar">
 <div class="top-bar-content">
 <span class="translation" data-en="Creating the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku tworzymy historię gościnności Warszawy">Od 1776 roku tworzymy historię gościnności Warszawy</span>
-<div class="language-switcher">
-<button class="lang-btn lang-btn-pl active">PL</button>
-<span class="separator">|</span>
-<button class="lang-btn lang-btn-en">EN</button>
-</div>
+
 </div>
 </div>
 <div class="container">
