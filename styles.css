@@ -3711,13 +3711,13 @@ body.scrolled .main-header {
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 36px 40px; /* Szersza / wyzsza belka granatowa */
+    padding: 47px 40px; /* Szersza / wyzsza belka granatowa */
     position: relative;
     transition: padding 0.3s ease;
 }
 
 body.scrolled .header-container {
-    padding: 12px 40px;
+    padding: 28px 40px;
 }
 
 .header-container .logo-container {
@@ -3887,6 +3887,7 @@ body.scrolled .logo-vfg-new {
         opacity: 0.3;
     }
 }
+
 
 
 
