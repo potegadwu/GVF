@@ -604,4 +604,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    // Bordeaux Navigation Bar Click Handlers (Permanent header bar)
+    const bordeauxLinks = document.querySelectorAll('.bordeaux-nav-link');
+    bordeauxLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const brand = link.getAttribute('data-brand');
+            const scrollTarget = link.getAttribute('data-scroll');
+            if (brand) {
+                e.preventDefault();
+                openBrandOverlay(brand);
+            } else if (scrollTarget === 'kontakt') {
+                e.preventDefault();
+                closeAllOverlays(false);
+                const kontaktSection = document.getElementById('kontakt');
+                if (kontaktSection) {
+                    kontaktSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
 });

@@ -281,14 +281,6 @@
 <!-- Navigation Header -->
 <header class="main-header" role="banner">
 <div class="header-container">
-<button aria-label="Toggle menu" class="menu-toggle" id="menu-toggle-btn">
-<span class="hamburger-icon">
-<span></span>
-<span></span>
-<span></span>
-</span>
-<span class="menu-text uppercase-spaced translation" data-en="Menu" data-pl="Menu">Menu</span>
-</button>
 <div class="logo-container">
 <a aria-label="Strona główna Villa Foksal Group" class="logo-link" href="#">
 <img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" src="assets/logo_vfg_transparent.png"/>
@@ -302,47 +294,49 @@
 </div>
 </div>
 </div>
-</header>
-<!-- Slide-out Left Menu -->
-<nav aria-label="Menu główne" class="side-menu" id="side-menu" role="navigation">
-<!-- Burgundy top thin bar representation -->
-<div class="side-menu-top-line"></div>
-<!-- Navy blue logo & header representation -->
-<div class="side-menu-header">
-<div class="side-menu-logo-wrapper">
-<img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" src="assets/logo_vfg_transparent.png"/>
-</div>
-<button aria-label="Close menu" class="close-menu" id="close-menu-btn">×</button>
-</div>
-<!-- Beige/Cream content section with links -->
-<div class="side-menu-content">
-<ul class="nav-links">
+<!-- Elegant Thin Bordeaux Navigation Bar -->
+<nav class="bordeaux-nav-bar" role="navigation" aria-label="Nawigacja główna">
+<div class="bordeaux-nav-container">
+<ul class="bordeaux-nav-list">
 <li>
-<a class="nav-item translation" data-en="Our Brands" data-pl="Nasze marki" href="#marki">Nasze marki</a>
-<ul class="nav-sub-links">
-<li>
-    <a class="nav-sub-item brand-nav-link" data-brand="vf" href="#villa-foksal" title="Villa Foksal">
-        <img alt="Villa Foksal" class="nav-sub-logo logo-vf" decoding="async" loading="eager" src="assets/logo_vf.svg"/>
+    <a class="bordeaux-nav-link brand-nav-link" data-brand="vf" href="#villa-foksal">
+        <span>Villa Foksal</span>
     </a>
 </li>
+<li class="bordeaux-nav-sep">•</li>
 <li>
-    <a class="nav-sub-item brand-nav-link" data-brand="lu" href="#lookup" title="LookUp Sky Events">
-        <img alt="LookUp Sky Events" class="nav-sub-logo logo-lu" decoding="async" loading="eager" src="assets/logo_lu.svg"/>
+    <a class="bordeaux-nav-link brand-nav-link" data-brand="lu" href="#lookup">
+        <span>LookUp Sky Events</span>
     </a>
 </li>
+<li class="bordeaux-nav-sep">•</li>
 <li>
-    <a class="nav-sub-item brand-nav-link" data-brand="cvf" href="#catering" title="Catering Villa Foksal">
-        <img alt="Catering Villa Foksal" class="nav-sub-logo logo-cvf" decoding="async" loading="eager" src="assets/logo_cvf_dark.svg"/>
+    <a class="bordeaux-nav-link brand-nav-link" data-brand="cvf" href="#catering">
+        <span>Catering Villa Foksal</span>
     </a>
 </li>
-</ul>
+<li class="bordeaux-nav-sep">•</li>
+<li>
+    <a class="bordeaux-nav-link" data-brand="omnie" href="#omnie" id="nav-omnie-btn">
+        <span class="translation" data-en="Heritage &amp; History" data-pl="Dziedzictwo i historia">Dziedzictwo i historia</span>
+    </a>
 </li>
-<li><a class="nav-item line-split translation" data-en="HERITAGE &amp; HISTORY<br>FOUNDER'S JOURNEY" data-pl="Dziedzictwo i historia<br>Droga założyciela" href="#omnie" id="nav-omnie-btn">Dziedzictwo i historia<br/>Droga założyciela</a></li>
-<li><a class="nav-item translation" data-en="Team" data-pl="Zespół" href="#" id="nav-zespol-btn">Zespół</a></li>
-<li><a class="nav-item translation" data-en="Contact" data-pl="Kontakt" href="#kontakt">Kontakt</a></li>
+<li class="bordeaux-nav-sep">•</li>
+<li>
+    <a class="bordeaux-nav-link" data-brand="zespol" href="#zespol" id="nav-zespol-btn">
+        <span class="translation" data-en="Team" data-pl="Zespół">Zespół</span>
+    </a>
+</li>
+<li class="bordeaux-nav-sep">•</li>
+<li>
+    <a class="bordeaux-nav-link" data-scroll="kontakt" href="#kontakt">
+        <span class="translation" data-en="Contact" data-pl="Kontakt">Kontakt</span>
+    </a>
+</li>
 </ul>
 </div>
 </nav>
+</header>
 <!-- MAIN CONTENT -->
 <main aria-label="Treść główna Villa Foksal Group" role="main">
 
@@ -1126,10 +1120,8 @@
 </div>
 <!-- O Mnie Overlay -->
 <div class="brand-overlay" id="overlay-omnie">
-<div class="overlay-content overlay-omnie-content">
 <button aria-label="Zamknij" class="close-overlay">× <span class="translation" data-en="Close" data-pl="Zamknij">Zamknij</span></button>
-<div class="overlay-inner-scroll">
-<!-- Section: About Me (Paweł Chmielewski) -->
+<div class="overlay-content overlay-omnie-content">
 <!-- Section: About Me (Paweł Chmielewski) -->
 <section class="section-about-me" id="o-mnie" style="padding: 0; background: transparent;">
 <div class="container-narrow text-center" style="max-width: 1000px; margin: 0 auto; padding-top: 40px;">
@@ -1191,7 +1183,6 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="bio-press-card-title uppercase-spaced translation" data-en="BAR QUICK • 1990" data-pl="Bar Quick • 1990">Bar Quick • 1990</div>
 <div class="bio-press-card-date">1990</div>
 <div class="bio-press-card-quote italic translation" data-en="“Paweł Chmielewski and the first burger bar in Warsaw...”" data-pl="„Paweł Chmielewski i pierwsza burgerownia w Warszawie...”">„Paweł Chmielewski i pierwsza burgerownia w Warszawie...”</div>
-</div>
 </div>
 </div>
 </div>
@@ -1317,7 +1308,6 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 
 </div> <!-- Close container-narrow -->
 </section> <!-- Close section-about-me -->
-</div> <!-- Close overlay-inner-scroll -->
 </div> <!-- Close overlay-omnie-content -->
 <!-- Dark Navy Overlay Footer (Domknięcie sekcji) -->
 <footer class="main-footer overlay-footer">
