@@ -3693,6 +3693,10 @@ body.fullscreen-video-active #scroll-to-top-btn {
     min-height: unset !important;
     box-shadow: 0 4px 22px rgba(0, 0, 0, 0.45);
     transition: var(--transition-smooth);
+    /* Stack navy bar + bordeaux nav bar vertically */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
 }
 
 body.scrolled .main-header {
@@ -3886,3 +3890,4 @@ body.scrolled .logo-vfg-new {
         opacity: 0.3;
     }
 }
+
