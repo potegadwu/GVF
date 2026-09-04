@@ -3711,7 +3711,7 @@ body.scrolled .main-header {
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 22px 40px; /* Szersza / wyższa belka granatowa */
+    padding: 36px 40px; /* Szersza / wyzsza belka granatowa */
     position: relative;
     transition: padding 0.3s ease;
 }
@@ -3727,16 +3727,16 @@ body.scrolled .header-container {
 }
 
 .logo-vfg-new {
-    height: 52px;
+    height: 68px;
     width: auto;
-    max-width: 210px;
+    max-width: 260px;
     object-fit: contain;
     display: block;
     transition: height 0.3s ease, transform 0.3s ease;
 }
 
 body.scrolled .logo-vfg-new {
-    height: 42px;
+    height: 52px;
 }
 
 /* PL / EN na końcu na belce granatowej po prawej */
@@ -3782,12 +3782,9 @@ body.scrolled .logo-vfg-new {
 
 /* 2. Belka bordo - węższa, na całej długości z nazwami działów */
 .bordeaux-nav-bar {
-    background: linear-gradient(90deg, #50101c 0%, #6f1726 50%, #50101c 100%);
-    border-top: 1px solid rgba(250, 247, 242, 0.12);
-    border-bottom: 1px solid rgba(11, 22, 44, 0.5);
+    background: #5e1420;
     width: 100%;
-    padding: 6px 0; /* Wąska listwa */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 3px 10px rgba(0, 0, 0, 0.25);
+    padding: 7px 0;
 }
 
 .bordeaux-nav-container {
@@ -3890,4 +3887,8 @@ body.scrolled .logo-vfg-new {
         opacity: 0.3;
     }
 }
+
+
+
+
 
