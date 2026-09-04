@@ -3680,7 +3680,9 @@ body.fullscreen-video-active #scroll-to-top-btn {
 }
 
 /* ==========================================================
-   Permanent Bordeaux Sub-Header Navigation Bar (Thin & Delicate)
+   Permanent Two-Bar Header:
+   1. Wide Navy Bar (Szersza granatowa z logo i PL/EN po prawej)
+   2. Narrow Bordeaux Bar (Węższa bordo na całej długości z działami)
    ========================================================== */
 .main-header {
     background-color: var(--color-navy);
@@ -3689,7 +3691,7 @@ body.fullscreen-video-active #scroll-to-top-btn {
     z-index: 900;
     padding: 0 !important;
     min-height: unset !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.45);
     transition: var(--transition-smooth);
 }
 
@@ -3698,19 +3700,20 @@ body.scrolled .main-header {
     min-height: unset !important;
 }
 
+/* 1. Belka granatowa - szersza, z wyśrodkowanym logo i PL/EN po prawej */
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 16px 40px;
+    padding: 22px 40px; /* Szersza / wyższa belka granatowa */
     position: relative;
     transition: padding 0.3s ease;
 }
 
 body.scrolled .header-container {
-    padding: 10px 40px;
+    padding: 12px 40px;
 }
 
 .header-container .logo-container {
@@ -3720,33 +3723,67 @@ body.scrolled .header-container {
 }
 
 .logo-vfg-new {
-    height: 46px;
+    height: 52px;
     width: auto;
-    max-width: 190px;
+    max-width: 210px;
     object-fit: contain;
     display: block;
-    transition: var(--transition-smooth);
+    transition: height 0.3s ease, transform 0.3s ease;
 }
 
 body.scrolled .logo-vfg-new {
-    height: 38px;
+    height: 42px;
 }
 
+/* PL / EN na końcu na belce granatowej po prawej */
 .header-container .header-right {
     position: absolute;
     right: 40px;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    align-items: center;
 }
 
-/* Thin Bordeaux Ribbon Navigation Bar */
+.header-lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-lang-switcher .lang-btn {
+    color: rgba(250, 247, 242, 0.65);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    padding: 2px 4px;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.header-lang-switcher .lang-btn.active,
+.header-lang-switcher .lang-btn:hover {
+    color: #FFFFFF;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.header-lang-switcher .separator {
+    color: rgba(250, 247, 242, 0.25);
+    font-size: 0.68rem;
+}
+
+/* 2. Belka bordo - węższa, na całej długości z nazwami działów */
 .bordeaux-nav-bar {
-    background: linear-gradient(90deg, #52121e 0%, #7A1C2E 50%, #52121e 100%);
+    background: linear-gradient(90deg, #50101c 0%, #6f1726 50%, #50101c 100%);
     border-top: 1px solid rgba(250, 247, 242, 0.12);
     border-bottom: 1px solid rgba(11, 22, 44, 0.5);
     width: 100%;
-    padding: 5px 0; /* Ultra-thin narrow bar */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 3px 10px rgba(0, 0, 0, 0.25);
+    padding: 6px 0; /* Wąska listwa */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 3px 10px rgba(0, 0, 0, 0.25);
 }
 
 .bordeaux-nav-container {
@@ -3765,19 +3802,19 @@ body.scrolled .logo-vfg-new {
     padding: 0;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
 }
 
-/* Thin, delicate, elegant typography */
+/* Teksty w menu: cienko, ładniej, delikatniej */
 .bordeaux-nav-link {
     color: rgba(250, 247, 242, 0.88);
     font-family: var(--font-sans);
-    font-size: 0.69rem;
-    font-weight: 300; /* Cienki krój pisma */
+    font-size: 0.70rem;
+    font-weight: 300; /* Cienki, lekki krój */
     text-transform: uppercase;
-    letter-spacing: 0.20em; /* Delikatny, przestronny rozstrzał liter */
+    letter-spacing: 0.22em; /* Delikatne rozświetlenie i rozstrzał liter */
     text-decoration: none;
-    padding: 3px 5px;
+    padding: 2px 4px;
     position: relative;
     display: inline-block;
     transition: color 0.3s ease, opacity 0.3s ease, text-shadow 0.3s ease;
@@ -3800,16 +3837,16 @@ body.scrolled .logo-vfg-new {
 .bordeaux-nav-link:hover {
     color: #FFFFFF;
     opacity: 1;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .bordeaux-nav-link:hover::after {
-    width: 70%;
+    width: 75%;
 }
 
 .bordeaux-nav-sep {
-    color: rgba(250, 247, 242, 0.3);
-    font-size: 0.6rem;
+    color: rgba(250, 247, 242, 0.35);
+    font-size: 0.65rem;
     line-height: 1;
     user-select: none;
     pointer-events: none;
@@ -3817,13 +3854,13 @@ body.scrolled .logo-vfg-new {
 
 @media (max-width: 900px) {
     .header-container {
-        padding: 10px 20px;
+        padding: 14px 20px;
     }
     .header-container .header-right {
         right: 15px;
     }
     .logo-vfg-new {
-        height: 38px;
+        height: 42px;
     }
     .bordeaux-nav-container {
         overflow-x: auto;
@@ -3836,16 +3873,16 @@ body.scrolled .logo-vfg-new {
         display: none;
     }
     .bordeaux-nav-list {
-        gap: 12px;
+        gap: 14px;
         width: max-content;
     }
     .bordeaux-nav-link {
-        font-size: 0.64rem;
-        letter-spacing: 0.15em;
-        padding: 2px 4px;
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+        padding: 2px 3px;
     }
     .bordeaux-nav-sep {
         display: inline-block;
-        opacity: 0.25;
+        opacity: 0.3;
     }
 }
