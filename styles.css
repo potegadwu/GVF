@@ -412,12 +412,12 @@ body.scrolled .side-menu-header {
 }
 
 .side-menu-logo-wrapper .logo-svg {
-    width: 100px;
-    height: 40px;
+    width: 120px;
+    height: 48px;
 }
 .side-menu-logo-wrapper .logo-vfg-new {
-    height: 23px;
-    max-width: 90px;
+    height: 28px;
+    max-width: 110px;
 }
 
 /* Side menu logo overrides for dark header block */
@@ -2850,12 +2850,12 @@ body.fullscreen-video-active #scroll-to-top-btn {
     }
     
     .side-menu-logo-wrapper .logo-svg {
-        width: 85px !important;
-        height: 24px !important;
+        width: 100px !important;
+        height: 30px !important;
     }
     .side-menu-logo-wrapper .logo-vfg-new {
-        height: 19px !important;
-        max-width: 75px !important;
+        height: 23px !important;
+        max-width: 90px !important;
     }
     
     .close-menu {
@@ -3673,4 +3673,8 @@ body.fullscreen-video-active #scroll-to-top-btn {
     .logo-vfg-new {
         height: 38px;
     }
+}
+
+.overlay-omnie-content {
+    padding-bottom: 60px;
 }

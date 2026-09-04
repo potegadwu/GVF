@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "catering-villa-foksal": "cvf",
         "cateringvillafoksal": "cvf",
         "zespol": "zespol",
-        "historia-i-dziedzictwo": "omnie",
+        "omnie": "omnie",
+        "o-mnie": "omnie",
         "historia": "omnie",
         "dziedzictwo": "omnie",
-        "o-mnie": "omnie",
-        "historia-dziedzictwo": "omnie",
-        "historia": "omnie",
-        "omnie": "omnie"
+        "dziedzictwo-i-historia": "omnie",
+        "historia-i-dziedzictwo": "omnie",
+        "historia-dziedzictwo": "omnie"
     };
 
     function openBrandOverlay(brandId, updateUrl = true) {
