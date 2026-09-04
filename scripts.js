@@ -56,22 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const sideMenu = document.getElementById('side-menu');
     const navItems = document.querySelectorAll('.nav-item');
-
     function toggleMenu() {
+        if (!sideMenu) return;
         const isOpen = sideMenu.classList.toggle('open');
         document.body.classList.toggle('menu-open', isOpen);
     }
-
     function closeMenu() {
+        if (!sideMenu) return;
         sideMenu.classList.remove('open');
         document.body.classList.remove('menu-open');
     }
 
-    menuToggleBtn.addEventListener('click', toggleMenu);
-    closeMenuBtn.addEventListener('click', closeMenu);
+    if (menuToggleBtn) menuToggleBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
 
     // Close menu when mouse leaves the side menu container (hover out)
-    sideMenu.addEventListener('mouseleave', closeMenu);
+    if (sideMenu) sideMenu.addEventListener('mouseleave', closeMenu);
 
     // Close menu when clicking on any nav link
     navItems.forEach(item => {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu when clicking outside of it
     document.addEventListener('click', (e) => {
-        if (sideMenu.classList.contains('open') && 
+        if (sideMenu && sideMenu.classList.contains('open') &&
             !sideMenu.contains(e.target) && 
             !menuToggleBtn.contains(e.target)) {
             closeMenu();
@@ -626,3 +626,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
