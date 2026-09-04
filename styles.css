@@ -2355,14 +2355,14 @@ body.scrolled .side-menu-header {
 
 /* Team grid: full-width bleed inside overlay (overrides overlay-content constraints) */
 .section-team .team-images-comparison {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 60px;
     margin-bottom: 70px;
+    position: static;
+    left: auto;
 }
 
 /* Bottom white breathing room before footer inside team overlay */
@@ -3887,6 +3887,7 @@ body.scrolled .logo-vfg-new {
         opacity: 0.3;
     }
 }
+
 
 
 
