@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             targetOverlay.classList.add("open");
             targetOverlay._openedAt = Date.now();
             document.body.style.overflow = "hidden";
+            document.body.classList.add("overlay-open");
             targetOverlay.scrollTop = 0;
 
             if (updateUrl && BRAND_HASH_MAP[brandId]) {
@@ -152,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         document.body.style.overflow = "";
+        document.body.classList.remove("overlay-open");
 
         if (updateUrl && wasOpen) {
             const currentHash = window.location.hash.substring(1).toLowerCase();

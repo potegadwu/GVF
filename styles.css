@@ -3894,3 +3894,25 @@ body.scrolled .logo-vfg-new {
 
 
 
+
+/* ======================================================
+   OVERLAY OPEN: Granatowa belka znika, zostaje tylko bordo listwa
+   ====================================================== */
+body.overlay-open .header-container {
+    max-height: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+}
+
+body:not(.overlay-open) .header-container {
+    max-height: 200px;
+    opacity: 1;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease;
+}
+
+body.overlay-open .bordeaux-nav-bar {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+}
