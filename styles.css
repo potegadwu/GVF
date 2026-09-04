@@ -1575,8 +1575,8 @@ body.scrolled .side-menu-header {
 
 .overlay-details-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr;
+    gap: 0;
 }
 
 .overlay-text h3 {
