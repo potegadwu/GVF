@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "lu": "lookup",
         "cvf": "catering",
         "zespol": "zespol",
-        "omnie": "historia-i-dziedzictwo"
+        "omnie": "omnie"
     };
 
     const HASH_BRAND_MAP = {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "o-mnie": "omnie",
         "historia-dziedzictwo": "omnie",
         "historia": "omnie",
-        "omnie": "historia-i-dziedzictwo"
+        "omnie": "omnie"
     };
 
     function openBrandOverlay(brandId, updateUrl = true) {
@@ -600,12 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (historyBanner) {
         historyBanner.addEventListener("click", (e) => {
             e.preventDefault();
-            window.location.hash = "historia-i-dziedzictwo";
-            const omnieOverlay = document.getElementById("overlay-omnie");
-            if (omnieOverlay) {
-                omnieOverlay.classList.add("active");
-                document.body.classList.add("overlay-open");
-            }
+            openBrandOverlay("omnie");
         });
     }
 

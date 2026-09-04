@@ -412,8 +412,12 @@ body.scrolled .side-menu-header {
 }
 
 .side-menu-logo-wrapper .logo-svg {
-    width: 200px; /* Same size as top header */
-    height: 80px;
+    width: 100px;
+    height: 40px;
+}
+.side-menu-logo-wrapper .logo-vfg-new {
+    height: 23px;
+    max-width: 90px;
 }
 
 /* Side menu logo overrides for dark header block */
@@ -2358,7 +2362,7 @@ body.scrolled .side-menu-header {
     margin-left: -50vw;
     margin-right: -50vw;
     margin-top: 60px;
-    margin-bottom: 0;
+    margin-bottom: 70px;
 }
 
 /* Bottom white breathing room before footer inside team overlay */
@@ -2846,8 +2850,12 @@ body.fullscreen-video-active #scroll-to-top-btn {
     }
     
     .side-menu-logo-wrapper .logo-svg {
-        width: 170px !important;
-        height: 48px !important;
+        width: 85px !important;
+        height: 24px !important;
+    }
+    .side-menu-logo-wrapper .logo-vfg-new {
+        height: 19px !important;
+        max-width: 75px !important;
     }
     
     .close-menu {
@@ -3286,9 +3294,9 @@ body.fullscreen-video-active #scroll-to-top-btn {
 
 @media (max-width: 768px) {
     .team-images-comparison {
-        gap: 0.6cm;
-        row-gap: 0.6cm;
-        column-gap: 0.6cm;
+        gap: 0;
+        row-gap: 0;
+        column-gap: 0;
     }
     .sales-onphoto-name { font-size: 0.92rem; }
     .sales-onphoto-role { font-size: 0.62rem; }
