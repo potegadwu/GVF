@@ -607,10 +607,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Bordeaux Navigation Bar Click Handlers (Permanent header bar)
+    // --- MOBILE BURGER MENU & BORDEAUX LAYER CONTROLLER ---
+    const mobileBurgerBtn = document.getElementById('mobile-burger-btn');
+    const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+
+    function toggleMobileNav() {
+        const isOpen = document.body.classList.toggle('mobile-nav-open');
+        if (mobileBurgerBtn) {
+            mobileBurgerBtn.classList.toggle('is-active', isOpen);
+            mobileBurgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+    }
+
+    function closeMobileNav() {
+        if (!document.body.classList.contains('mobile-nav-open')) return;
+        document.body.classList.remove('mobile-nav-open');
+        if (mobileBurgerBtn) {
+            mobileBurgerBtn.classList.remove('is-active');
+            mobileBurgerBtn.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    if (mobileBurgerBtn) {
+        mobileBurgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileNav();
+        });
+    }
+
+    if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', closeMobileNav);
+    }
+
+    // Auto-close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMobileNav();
+        }
+    });
+
+    // Auto-close on resize beyond mobile breakpoint
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+            closeMobileNav();
+        }
+    });
+
+    // Bordeaux Navigation Bar Click Handlers (Permanent header bar & Mobile bordeaux layer)
     const bordeauxLinks = document.querySelectorAll('.bordeaux-nav-link');
     bordeauxLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // Close mobile menu on selection
+            closeMobileNav();
+
             const brand = link.getAttribute('data-brand');
             const scrollTarget = link.getAttribute('data-scroll');
             if (brand) {
@@ -621,7 +670,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllOverlays(false);
                 const kontaktSection = document.getElementById('kontakt');
                 if (kontaktSection) {
-                    kontaktSection.scrollIntoView({ behavior: 'smooth' });
+                    window.scrollTo({
+                        top: kontaktSection.offsetTop,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });

@@ -273,7 +273,7 @@
 <!-- FontAwesome for icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <!-- Custom CSS -->
-<link href="styles.css" rel="stylesheet"/>
+<link href="styles.css?v=1788765052" rel="stylesheet"/>
 </head>
 <body>
 <!-- SEO: Hidden H1 (critical for page ranking, visually integrated with design) -->
@@ -292,10 +292,16 @@
 <span class="separator">|</span>
 <button class="lang-btn lang-btn-en">EN</button>
 </div>
+<!-- Mobile Burger Menu Toggle Button -->
+<button class="mobile-burger-btn" id="mobile-burger-btn" type="button" aria-label="Menu nawigacji" aria-expanded="false">
+    <span class="burger-bar burger-bar-top"></span>
+    <span class="burger-bar burger-bar-mid"></span>
+    <span class="burger-bar burger-bar-bot"></span>
+</button>
 </div>
 </div>
 <!-- Elegant Thin Bordeaux Navigation Bar -->
-<nav class="bordeaux-nav-bar" role="navigation" aria-label="Nawigacja główna">
+<nav class="bordeaux-nav-bar" id="bordeaux-nav-bar" role="navigation" aria-label="Nawigacja główna">
 <div class="bordeaux-nav-container">
 <ul class="bordeaux-nav-list">
 <li>
@@ -337,6 +343,8 @@
 </div>
 </nav>
 </header>
+<!-- Mobile Navigation Backdrop -->
+<div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
 <!-- MAIN CONTENT -->
 <main aria-label="Treść główna Villa Foksal Group" role="main">
 
@@ -433,6 +441,16 @@
 </section>
 
 <!-- Section: Three Vertical Banners (Portfolio Marek) -->
+
+<!-- MOBILE/TABLET ONLY: Biale pole z haslem - widoczne pod sekcja Historia i Dziedzictwo -->
+<section class="section-mobile-tagline" aria-hidden="false">
+<div class="mobile-tagline-inner">
+<p class="mobile-tagline-text translation"
+   data-pl="Od 1776 roku kontynuujemy historię gościnności Warszawy"
+   data-en="Since 1776 we continue the history of Warsaw’s hospitality">Od 1776 roku kontynuujemy historię gościnności Warszawy</p>
+<div class="mobile-tagline-ornament"></div>
+</div>
+</section>
 
 </main>
 <!-- BRAND DETAIL SUBPAGES (Elegant Overlays) -->
@@ -855,7 +873,67 @@
 </div>
 </div>
 
-<!-- Dark Navy Overlay Footer (Domknięcie sekcji) -->
+
+<!-- Pasek margines światła nad stopką -->
+<div class="team-footer-light-bar"></div>
+
+<!-- Dark Navy Overlay Footer (Domknięcie sekcji Zespół) -->
+<footer class="main-footer overlay-footer">
+<div class="top-bar">
+<div class="top-bar-content">
+<span class="translation" data-en="Continuing the history of Warsaw's hospitality since 1776" data-pl="Od 1776 roku kontynuujemy historię gościnności Warszawy">Od 1776 roku kontynuujemy historię gościnności Warszawy</span>
+</div>
+</div>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col brand-col">
+<div class="footer-logo">
+<img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" loading="lazy" src="assets/logo_vfg_transparent.png"/>
+</div>
+<p class="translation" data-en="A continuation of the history of hospitality. Three brands, one excellence." data-pl="Kontynuacja historii gościnności. Trzy marki, jedna doskonałość.">Kontynuacja historii gościnności. Trzy marki, jedna doskonałość.</p>
+</div>
+<div class="footer-col">
+<h4 class="uppercase-spaced translation" data-en="Contact" data-pl="Kontakt">Kontakt</h4>
+<p>Villa Foksal Group<br/>ul. Foksal 3/5, 00-366 Warszawa</p>
+<p><span class="translation" data-en="Phone:" data-pl="Telefon:">Telefon:</span> <a href="tel:+48502042588">502 042 588</a></p>
+<p>Email: <a href="mailto:gosia@villafoksal.pl">gosia@villafoksal.pl</a></p>
+</div>
+<div class="footer-col">
+<h4 class="uppercase-spaced translation" data-en="Our Brands" data-pl="Nasze marki">Nasze marki</h4>
+<ul class="footer-links">
+<li>
+<a class="footer-brand-item" data-brand="vf" href="#villa-foksal">
+<span class="footer-brand-logo-wrap">
+<img alt="Villa Foksal" class="footer-brand-logo logo-vf-footer" decoding="async" loading="lazy" src="assets/logo_vf_white.svg"/>
+</span>
+<span class="footer-brand-name">Villa Foksal</span>
+</a>
+</li>
+<li>
+<a class="footer-brand-item" data-brand="lu" href="#lookup">
+<span class="footer-brand-logo-wrap">
+<img alt="LookUp Sky Events" class="footer-brand-logo logo-lu-footer" decoding="async" loading="lazy" src="assets/logo_lu_white.svg"/>
+</span>
+<span class="footer-brand-name">LookUp Sky Events</span>
+</a>
+</li>
+<li>
+<a class="footer-brand-item" data-brand="cvf" href="#catering">
+<span class="footer-brand-logo-wrap">
+<img alt="Catering Villa Foksal" class="footer-brand-logo logo-cvf-footer" decoding="async" loading="lazy" src="assets/logo_cvf_white.svg"/>
+</span>
+<span class="footer-brand-name">Catering Villa Foksal</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Villa Foksal Group. All rights reserved. Designed with prestige.</p>
+<p class="footer-credits"><span class="translation" data-en="Website by:" data-pl="Realizacja:">Realizacja:</span> <a href="https://skorwider.pl" target="_blank" rel="noopener">skorwider.pl</a></p>
+</div>
+</div>
+</footer>
 
 </div>
 <!-- O Mnie Overlay -->
@@ -1078,7 +1156,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 <div class="footer-logo">
 <img alt="Villa Foksal Group Logo" class="logo-svg logo-vfg-new" decoding="async" loading="lazy" src="assets/logo_vfg_transparent.png"/>
 </div>
-<p class="translation" data-en="Evolution of prestige and hospitality. Three brands, one excellence." data-pl="Ewolucja prestiżu i gościnności. Trzy marki, jedna doskonałość.">Ewolucja prestiżu i gościnności. Trzy marki, jedna doskonałość.</p>
+<p class="translation" data-en="A continuation of the history of hospitality. Three brands, one excellence." data-pl="Kontynuacja historii gościnności. Trzy marki, jedna doskonałość.">Kontynuacja historii gościnności. Trzy marki, jedna doskonałość.</p>
 </div>
 <div class="footer-col">
 <h4 class="uppercase-spaced translation" data-en="Contact" data-pl="Kontakt">Kontakt</h4>
@@ -1129,7 +1207,7 @@ Od XVIII-wiecznych ogrodów Vauxhall aż po współczesną ikonę polskiej gastr
 </svg>
 </button>
 <!-- Scripts -->
-<script src="scripts.js"></script>
+<script src="scripts.js?v=1788765052"></script>
 </body>
 </html>
 
