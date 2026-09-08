@@ -4017,16 +4017,17 @@ body.scrolled .logo-vfg-new {
         transform: translateY(-5.5px) rotate(-45deg);
     }
 
-        /* === BORDEAUX NAV BAR: domyslnie ukryta, rozwija sie po kliknieciu burgera === */
+        /* === MOBILE DROPDOWN MENU: Biala warstwa, nazwy dzialow kolorem bordo === */
     .bordeaux-nav-bar {
         display: none !important;
         position: fixed !important;
         top: 64px !important;
         left: 0 !important;
         width: 100% !important;
-        background: linear-gradient(180deg, #5e1420 0%, #480c16 100%) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55) !important;
+        background: #FFFFFF !important;
+        border-top: 1px solid rgba(15, 30, 61, 0.08) !important;
+        border-bottom: 2px solid var(--color-bordeaux, #7A1C2E) !important;
+        box-shadow: 0 16px 36px rgba(15, 30, 61, 0.14), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
         padding: 0 !important;
         margin: 0 !important;
         box-sizing: border-box !important;
@@ -4047,6 +4048,7 @@ body.scrolled .logo-vfg-new {
         display: block !important;
         overflow: visible !important;
         box-sizing: border-box !important;
+        background: #FFFFFF !important;
     }
 
     .bordeaux-nav-list {
@@ -4058,12 +4060,14 @@ body.scrolled .logo-vfg-new {
         list-style: none !important;
         gap: 0 !important;
         align-items: stretch !important;
+        background: #FFFFFF !important;
     }
 
     .bordeaux-nav-list li {
         width: 100%;
         margin: 0;
         padding: 0;
+        background: transparent !important;
     }
 
     .bordeaux-nav-sep {
@@ -4076,17 +4080,22 @@ body.scrolled .logo-vfg-new {
         width: 100% !important;
         padding: 16px 24px !important;
         font-family: var(--font-sans) !important;
-        font-size: 0.76rem !important;
-        font-weight: 300 !important;
-        letter-spacing: 0.22em !important;
+        font-size: 0.78rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.2em !important;
         text-transform: uppercase !important;
-        color: rgba(250, 247, 242, 0.9) !important;
-        border-bottom: 1px solid rgba(250, 247, 242, 0.07) !important;
+        color: var(--color-bordeaux, #7A1C2E) !important;
+        border-bottom: 1px solid rgba(122, 28, 46, 0.08) !important;
         text-decoration: none !important;
         box-sizing: border-box !important;
         white-space: nowrap !important;
+        background: transparent !important;
         transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease !important;
         -webkit-tap-highlight-color: transparent;
+    }
+
+    .bordeaux-nav-link span {
+        color: inherit !important;
     }
 
     .bordeaux-nav-list li:last-child .bordeaux-nav-link {
@@ -4097,10 +4106,11 @@ body.scrolled .logo-vfg-new {
         display: none !important;
     }
 
+    .bordeaux-nav-link:hover,
     .bordeaux-nav-link:active {
-        background: rgba(0, 0, 0, 0.18) !important;
-        color: #FFFFFF !important;
-        padding-left: 30px !important;
+        background: rgba(122, 28, 46, 0.05) !important;
+        color: #55101d !important;
+        padding-left: 28px !important;
     }
 
     /* === BACKDROP === */
