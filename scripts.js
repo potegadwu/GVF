@@ -670,8 +670,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllOverlays(false);
                 const kontaktSection = document.getElementById('kontakt');
                 if (kontaktSection) {
+                    const headerOffset = window.innerWidth <= 768 ? 64 : 105;
                     window.scrollTo({
-                        top: kontaktSection.offsetTop,
+                        top: Math.max(0, kontaktSection.offsetTop - headerOffset),
                         behavior: 'smooth'
                     });
                 }
