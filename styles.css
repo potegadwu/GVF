@@ -1705,7 +1705,7 @@ body.scrolled .side-menu-header {
 .main-footer {
     background-color: var(--color-navy);
     color: var(--bg-cream);
-    padding: 0 0 40px 0;
+    padding: 0 0 20px 0;
     border-top: none;
     width: 100%;
     box-sizing: border-box;
@@ -1735,14 +1735,14 @@ body.scrolled .side-menu-header {
 }
 
 .main-footer .container {
-    padding-top: 70px;
+    padding-top: 35px;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     align-items: start;
 }
 
@@ -4235,26 +4235,26 @@ body.overlay-open .bordeaux-nav-bar {
    HOMEPAGE CONTACT SECTION (#kontakt)
    ====================================================== */
 #kontakt.main-footer {
-    min-height: 100vh;
+    min-height: auto;
     padding-top: 0;
     background-color: var(--bg-cream) !important;
     color: var(--color-navy); /* Usunięcie granatowego paska nad wiśniową belką */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     scroll-margin-top: 105px;
 }
 
 #kontakt.main-footer .container {
-    flex: 1;
+    flex: none;
     display: flex;
     background-color: var(--color-navy);
     color: var(--bg-cream);
     flex-direction: column;
     justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding-top: 25px;
+    padding-bottom: 20px;
     max-width: 100% !important;
     margin: 0 !important;
     padding-left: 60px !important;
@@ -4265,13 +4265,13 @@ body.overlay-open .bordeaux-nav-bar {
 @media (max-width: 768px) {
     #kontakt.main-footer {
         padding-top: 0;
-        min-height: 100vh;
+        min-height: auto;
         scroll-margin-top: 64px;
     }
 
     #kontakt.main-footer .container {
-        padding-top: 45px;
-        padding-bottom: 35px;
+        padding-top: 22px;
+        padding-bottom: 18px;
     }
 }
 
@@ -4281,7 +4281,7 @@ body.overlay-open .bordeaux-nav-bar {
    Widoczne na desktop, tablet i mobile pod zdjęciem Foksal
    ====================================================== */
 .section-mobile-tagline {
-    display: block; /* Widoczne na mobile, tablet i desktop */
+    display: none !important; /* Widoczne na mobile, tablet i desktop */
     background-color: var(--bg-cream); /* Beżowe/kremowe tło spójne z sekcją wyżej */
     border-top: 1px solid rgba(11, 22, 44, 0.05);
     border-bottom: none; /* Wiśniowa belka przylega bezpośrednio od dołu */
