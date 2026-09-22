@@ -1198,9 +1198,9 @@ body.scrolled .side-menu-header {
 /* CTA Section */
 .vf-cta-section {
     background: var(--bg-cream);
-    padding: 60px;
+    padding: 28px 40px 48px 40px;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 20px;
     border-top: none;
 }
 
@@ -1276,7 +1276,8 @@ body.scrolled .side-menu-header {
         grid-template-columns: 1fr;
     }
     .vf-cta-section {
-        padding: 40px 24px;
+        padding: 24px 20px 36px 20px;
+        margin-top: 16px;
     }
 }
 
