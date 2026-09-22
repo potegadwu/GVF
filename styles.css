@@ -1744,7 +1744,11 @@ body.scrolled .side-menu-header {
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 30px;
-    align-items: start;
+    align-items: center;
+}
+
+.footer-grid .footer-col:not(.brand-col) {
+    align-self: center;
 }
 
 .footer-col.brand-col {
